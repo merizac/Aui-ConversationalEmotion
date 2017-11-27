@@ -4,8 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var debug = require('debug')('aui-project:app');
+var dotenv = require('dotenv').config();
 
 var index = require('./routes/index');
+var tone_analyzer = require('./routes/tone-analyzer');
+var key = require('./routes/key');
 
 var app = express();
 
@@ -20,12 +24,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules/microsoft-speech-browser-sdk/distrib')));
 
 app.use('/', index); // redirect root
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/fonts/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/fonts'))); //redirect bootstrap glyphicons
+
+app.use('/', index);
+app.use('/tone-analyzer', tone_analyzer);
+app.use('/key', key);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
