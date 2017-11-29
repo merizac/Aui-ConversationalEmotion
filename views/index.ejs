@@ -19,52 +19,37 @@
   <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
 
 </head>
-<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
-  <table width="100%">
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <td align="right">Format:</td>
-      <td align="left">
-        <select id="formatOptions">
-          <option value="Simple" selected="selected">Simple Result</option>
-          <option value="Detailed">Detailed Result</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <button id="startBtn" disabled="disabled">Starts</button>
-        <button id="stopBtn" disabled="disabled">Stop</button>
-        <button id="analyzeBtn" disabled="disabled">Analyze</button>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <table>
-          <tr>
-            <td>Results:</td>
-            <td>Current hypothesis:</td>
-          </tr>
-          <tr>
-            <td>
-              <textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea>
-            </td>
-            <td style="vertical-align: top">
-              <span id="hypothesisDiv" style="width:200px;height:200px;display:block;"></span>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td align="right">Status:</td>
-      <td align="left"><span id="statusDiv"></span></td>
-    </tr>
-  </table>
+<body>
+
+<div class="container" id="main">
+
+    <%include partials/header.ejs%>
+
+    <div class="row">
+        <button type="button" class="btn btn-primary" id="startBtn" disabled="disabled">Start</button>
+        <button type="button" class="btn btn-danger" id="stopBtn" disabled="disabled">Stop</button>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5">
+            Current hypothesis:
+            <span id="hypothesisDiv" style="width:200px;height:200px;display:block;"></span>
+        </div>
+
+        <div class="col-sm-5">
+            Results:
+            <textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="button" class="btn btn-success" id="analyzeBtn" disabled="disabled">Analyze</button>
+    </div>
+
+</div>
+
+<%include partials/footer.ejs%>
+
 
   <!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
@@ -82,6 +67,14 @@
 
   <!-- Bootstrap JS -->
   <script src="/js/bootstrap.min.js"></script>
+
+  <!-- Custom JS -->
+    <script>
+        $(function(){
+            $("#header").load("header.ejs");
+            $("#footer").load("footer.ejs");
+        });
+    </script>
 
 </body>
 </html>

@@ -65,62 +65,62 @@ function RecognizerSetup(SDK, recognitionMode, language, format, subscriptionKey
 
       }
 
-      // Start the recognition
-      function RecognizerStart(SDK, recognizer) {
-        recognizer.Recognize((event) => {
-          /*
-          Alternative syntax for typescript devs.
-          if (event instanceof SDK.RecognitionTriggeredEvent)
-          */
-          switch (event.Name) {
+// Start the recognition
+function RecognizerStart(SDK, recognizer) {
+    recognizer.Recognize(function (event) {
+        /*
+        Alternative syntax for typescript devs.
+        if (event instanceof SDK.RecognitionTriggeredEvent)
+        */
+        switch (event.Name) {
             case "RecognitionTriggeredEvent" :
-            UpdateStatus("Initializing");
-            break;
+                UpdateStatus("Initializing");
+                break;
             case "ListeningStartedEvent" :
-            UpdateStatus("Listening");
-            break;
+                UpdateStatus("Listening");
+                break;
             case "RecognitionStartedEvent" :
-            UpdateStatus("Listening_Recognizing");
-            break;
+                UpdateStatus("Listening_Recognizing");
+                break;
             // case "SpeechStartDetectedEvent" :
             // UpdateStatus("Listening_DetectedSpeech_Recognizing");
             // console.log(JSON.stringify(event.Result)); // check console for other information in result
             // break;
             case "SpeechHypothesisEvent" :
-            UpdateRecognizedHypothesis(event.Result.Text, false);
-            console.log(JSON.stringify(event.Result)); // check console for other information in result
-            break;
+                UpdateRecognizedHypothesis(event.Result.Text, false);
+                console.log(JSON.stringify(event.Result)); // check console for other information in result
+                break;
             // case "SpeechFragmentEvent" :
             // UpdateRecognizedHypothesis(event.Result.Text, true);
             // console.log(JSON.stringify(event.Result)); // check console for other information in result
             // break;
             case "SpeechEndDetectedEvent" :
-            OnSpeechEndDetected();
-            UpdateStatus("Processing_Adding_Final_Touches");
-            console.log(JSON.stringify(event.Result)); // check console for other information in result
-            break;
+                OnSpeechEndDetected();
+                UpdateStatus("Processing_Adding_Final_Touches");
+                console.log(JSON.stringify(event.Result)); // check console for other information in result
+                break;
             case "SpeechSimplePhraseEvent" :
-            UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
-            break;
+                UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
+                break;
             case "SpeechDetailedPhraseEvent" :
-            UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
-            break;
+                UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
+                break;
             case "RecognitionEndedEvent" :
-            OnComplete();
-            UpdateStatus("Idle");
-            console.log(JSON.stringify(event)); // Debug information
-            break;
+                OnComplete();
+                UpdateStatus("Idle");
+                console.log(JSON.stringify(event)); // Debug information
+                break;
             default:
-            console.log(JSON.stringify(event)); // Debug information
-          }
-        })
-        .On(() => {
-          // The request succeeded. Nothing to do here.
-        },
-        (error) => {
-          console.error(error);
-        });
-      }
+                console.log(JSON.stringify(event)); // Debug information
+        }
+    })
+        .On(function() {
+                // The request succeeded. Nothing to do here.
+            },
+            function (error){
+                console.error(error);
+            });
+}
 
       // Stop the Recognition.
       function RecognizerStop(SDK, recognizer) {
@@ -140,13 +140,11 @@ function RecognizerSetup(SDK, recognitionMode, language, format, subscriptionKey
         analyzeBtn = document.getElementById("analyzeBtn");
         phraseDiv = document.getElementById("phraseDiv");
         hypothesisDiv = document.getElementById("hypothesisDiv");
-        statusDiv = document.getElementById("statusDiv");
-        formatOptions = document.getElementById("formatOptions");
+        //statusDiv = document.getElementById("statusDiv");
         $.get('/key?service=STT', function(response){
           key=response;
         });
 
-        formatOptions.addEventListener("change", Setup);
 
         startBtn.addEventListener("click", function () {
             if (!recognizer) {
@@ -186,12 +184,12 @@ function RecognizerSetup(SDK, recognitionMode, language, format, subscriptionKey
         if (recognizer != null) {
           RecognizerStop(SDK, recognizer);
         }
-        recognizer = RecognizerSetup(SDK, "Interactive", "it-IT", SDK.SpeechResultFormat[formatOptions.value], key);
+        recognizer = RecognizerSetup(SDK, "Interactive", "it-IT", SDK.SpeechResultFormat["Simple"], key);
       }
 
-      function UpdateStatus(status) {
+      /*function UpdateStatus(status) {
         statusDiv.innerHTML = status;
-      }
+      }*/
 
       function UpdateRecognizedHypothesis(text, append) {
         if (append)
