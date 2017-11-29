@@ -74,13 +74,13 @@ function RecognizerStart(SDK, recognizer) {
         */
         switch (event.Name) {
             case "RecognitionTriggeredEvent" :
-                UpdateStatus("Initializing");
+                //UpdateStatus("Initializing");
                 break;
             case "ListeningStartedEvent" :
-                UpdateStatus("Listening");
+                //UpdateStatus("Listening");
                 break;
             case "RecognitionStartedEvent" :
-                UpdateStatus("Listening_Recognizing");
+                //UpdateStatus("Listening_Recognizing");
                 break;
             // case "SpeechStartDetectedEvent" :
             // UpdateStatus("Listening_DetectedSpeech_Recognizing");
@@ -96,7 +96,7 @@ function RecognizerStart(SDK, recognizer) {
             // break;
             case "SpeechEndDetectedEvent" :
                 OnSpeechEndDetected();
-                UpdateStatus("Processing_Adding_Final_Touches");
+                //UpdateStatus("Processing_Adding_Final_Touches");
                 console.log(JSON.stringify(event.Result)); // check console for other information in result
                 break;
             case "SpeechSimplePhraseEvent" :
@@ -107,7 +107,7 @@ function RecognizerStart(SDK, recognizer) {
                 break;
             case "RecognitionEndedEvent" :
                 OnComplete();
-                UpdateStatus("Idle");
+                //UpdateStatus("Idle");
                 console.log(JSON.stringify(event)); // Debug information
                 break;
             default:
@@ -184,6 +184,7 @@ function RecognizerStart(SDK, recognizer) {
         if (recognizer != null) {
           RecognizerStop(SDK, recognizer);
         }
+        console.log("key: "+ key);
         recognizer = RecognizerSetup(SDK, "Interactive", "it-IT", SDK.SpeechResultFormat["Simple"], key);
       }
 
