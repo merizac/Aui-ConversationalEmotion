@@ -28,28 +28,37 @@
         <%include partials/header.ejs%>
     </div>
 
-    <div class="row">
-        <button type="button" class="btn btn-success" id="startBtn" disabled="disabled">Start</button>
-        <button type="button" class="btn btn-danger" id="stopBtn" disabled="disabled">Stop</button>
+    <div class="row top-buffer">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-success btn-lg" id="startBtn" disabled="disabled">Start</button>
+            <button type="button" class="btn btn-danger btn-lg" id="stopBtn" disabled="disabled">Stop</button>
+        </div>
     </div>
 
-    <div class="row">
+    <div class="row top-buffer">
 
-        <div class="col-sm-6">
-            Registrazione in corso:
+        <div class="col-sm-5">
+            <b><font size="4">Registrazione in corso:</font></b>
             <textarea id="hypothesisDiv" class="form-control animated"></textarea>
         </div>
 
-        <div class="col-sm-6">
-            Risultati:
+        <div class="col-sm-5">
+            <b><font size="4">Risultati:</font></b>
             <textarea id="phraseDiv" class="form-control animated"></textarea>
         </div>
 
     </div>
 
-    <div class="row">
-        <button type="button" class="btn btn-primary" id="analyzeBtn" disabled="disabled">Analyze</button>
-        <textarea id="analysisDiv" class="form-control animated"></textarea>
+    <div class="row top-buffer" id="analysisRow">
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-primary btn-lg" id="analyzeBtn" disabled="disabled">Analyze</button>
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-sm-5">
+            <textarea id="analysisDiv" class="form-control animated"></textarea>
+        </div>
     </div>
 
 </div>
