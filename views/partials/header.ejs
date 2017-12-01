@@ -7,19 +7,37 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
     <div class="container">
 
-        <a class="navbar-brand" href="/home">Express YourSelf</a>
+        <button class="navbar-toggle" data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button" id="collapseBtn">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="/home"><b><font size="5">Express YourSelf</font></b></a>
+
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav navbar-center">
+                <li>
+                    <a href="/home"><font size="4">Pazienti</font></a>
+                </li>
+
+                <li>
+                    <a href="/home"><font size="4">Video</font></a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/home" id="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                </li>
+            </ul>
+        </div>
 
     </div>
-</div><!-- end navbar -->
-
-<!--<script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>-->
+</div>
 
 </body>
 </html>

@@ -1,8 +1,45 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 70px;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
 }
+
+/* --- navbar --- */
+.navbar {
+  background-color: #709dff;
+}
+
+.navbar .navbar-brand {
+  color: white;
+}
+
+#logout {
+  color: white;
+}
+
+.navbar-toggle .icon-bar{
+  background-color: white;
+}
+
+#collapseBtn {
+  border-color: white;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+
+
+/*--- textArea ---*/
+.animated {
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  transition: height 0.2s;
+}
+

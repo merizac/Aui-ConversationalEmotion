@@ -163,8 +163,8 @@ function RecognizerStart(SDK, recognizer) {
           var url = '/tone-analyzer?text='+text;
 
           $.get(url, function(responseText) {
-            phraseDiv.innerHTML = "";
-            phraseDiv.innerHTML += JSON.stringify(responseText);
+            //phraseDiv.innerHTML = "";
+            analysisDiv.innerHTML += JSON.stringify(responseText);
           });
         })
 

@@ -21,32 +21,39 @@
 </head>
 <body>
 
-<div class="container" id="main">
 
-    <%include partials/header.ejs%>
+<div class="container">
+
+    <div>
+        <%include partials/header.ejs%>
+    </div>
 
     <div class="row">
-        <button type="button" class="btn btn-primary" id="startBtn" disabled="disabled">Start</button>
+        <button type="button" class="btn btn-success" id="startBtn" disabled="disabled">Start</button>
         <button type="button" class="btn btn-danger" id="stopBtn" disabled="disabled">Stop</button>
     </div>
 
     <div class="row">
-        <div class="col-sm-5">
-            Current hypothesis:
-            <span id="hypothesisDiv" style="width:200px;height:200px;display:block;"></span>
+
+        <div class="col-sm-6">
+            Registrazione in corso:
+            <textarea id="hypothesisDiv" class="form-control animated"></textarea>
         </div>
 
-        <div class="col-sm-5">
-            Results:
-            <textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea>
+        <div class="col-sm-6">
+            Risultati:
+            <textarea id="phraseDiv" class="form-control animated"></textarea>
         </div>
+
     </div>
 
     <div class="row">
-        <button type="button" class="btn btn-success" id="analyzeBtn" disabled="disabled">Analyze</button>
+        <button type="button" class="btn btn-primary" id="analyzeBtn" disabled="disabled">Analyze</button>
+        <textarea id="analysisDiv" class="form-control animated"></textarea>
     </div>
 
 </div>
+
 
 <%include partials/footer.ejs%>
 
@@ -67,6 +74,16 @@
 
   <!-- Bootstrap JS -->
   <script src="/js/bootstrap.min.js"></script>
+
+  <!-- AutoResize -->
+    <script src="javascripts/autoResize-textArea.js"></script>
+
+    <script>
+        $(function(){
+            $('.normal').autosize();
+            $('.animated').autosize({append: "\n"});
+        });
+    </script>
 
   <!-- Custom JS -->
     <script>
