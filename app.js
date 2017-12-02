@@ -11,6 +11,8 @@ var index = require('./routes/index');
 var tone_analyzer = require('./routes/tone-analyzer');
 var key = require('./routes/key');
 var home = require('./routes/home');
+var profiles =  require('./routes/profiles');
+
 
 var app = express();
 
@@ -37,6 +39,8 @@ app.use('/', index);
 app.use('/tone-analyzer', tone_analyzer);
 app.use('/key', key);
 app.use('/home', home);
+app.use('/profiles', profiles);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
