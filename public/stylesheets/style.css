@@ -46,7 +46,7 @@ a {
     transition: height 0.2s;
   }
 
-  /**--- Rows with padding ---*/
+  /**--- rows with padding ---*/
   .top-buffer { margin-top:20px; }
 
   #analysisRow {margin-top: 60px;}
@@ -54,6 +54,12 @@ a {
   /*--- stopBtn ---*/
   #stopBtn {
     margin-left: 10px;
+  }
+
+  /*--- chart ---*/
+  #myChart {
+    width: 100%;
+    height: auto;
   }
 
 /*--- end index.ejs ---*/
