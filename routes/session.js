@@ -17,8 +17,7 @@ router.get('/', function(req, res, next) {
     });
 
     parse_param=_.shuffle(parse_param['emotions']);
-    console.log(JSON.stringify(parse_param))
-;    res.render('session', { data : parse_param});
+    res.render('session', { data : parse_param});
 
 });
 

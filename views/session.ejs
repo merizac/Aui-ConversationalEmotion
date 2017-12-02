@@ -28,40 +28,26 @@
         <%include partials/header.ejs%>
     </div>
 
-    <% for(var i=0; i < data.length; i++) { %>
-        <p><%= data[i].emotion %></p>
-    <% } %>
-
-    <% data.forEach(function(elem){%>
-        <p><%= elem.emotion %></p>
-    <%})%>
+    <% data.forEach(function(elem, index){ %>
+        <div class="row top-video-row">
+            <div class="col-sm-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video controls id="video<%= index %>" class="embed-responsive-item video">
+                        <source src="/video/<%= elem.emotion %>" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group radio-button-video">
+                    <input name="opt-video" type="radio" id="radio-<%= elem.right %>-<%= index %>">
+                </div>
+            </div>
+        </div>
+    <% }); %>
 
     <div class="row top-video-row">
-        <div class="col-sm-5">
-            <div class="embed-responsive embed-responsive-16by9">
-                <video controls id="video2" class="embed-responsive-item video">
-                    <source src="/video/joy" type="video/mp4">
-                </video>
-            </div>
-        </div>
         <div class="col-sm-2">
-            <div class="form-group radio-button-video">
-                <input name="opt-video" type="radio" id="radio2">
-            </div>
-        </div>
-    </div>
-    <div class="row top-video-row">
-        <div class="col-sm-5">
-            <div class="embed-responsive embed-responsive-16by9">
-                <video controls id="video3" class="embed-responsive-item video">
-                    <source src="/video/joy" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="form-group radio-button-video">
-                <input name="opt-video" type="radio" id="radio3">
-            </div>
+            <button type="button" class="btn btn-success btn-lg" id="submit">Submit</button>
         </div>
     </div>
 
@@ -69,6 +55,7 @@
 
 
 <%include partials/footer.ejs%>
+
 
 
 <!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
@@ -95,6 +82,31 @@
 </script>
 
 <!-- Custom JS -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+
+
+        var btn = document.getElementById("submit");
+        btn.addEventListener("click", function(){
+            var elements = document.querySelectorAll('input[id^="radio-"]:checked');
+            if(elements.length==0){
+                alert("select a video!");
+            }
+            else{
+                var id= elements[0].id;
+                var res = id.split("-");
+                if(res[1]=="true"){
+                    alert("Correct answer");
+                }
+                else{
+                    alert("Wrong answer");
+                }
+            }
+
+        });
+    });
+</script>
 
 
 </body>
