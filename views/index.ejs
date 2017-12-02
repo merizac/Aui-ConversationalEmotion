@@ -57,6 +57,9 @@
 
     <div class="row top-buffer">
         <div class="col-sm-5">
+
+            <canvas id="myChart"></canvas>
+
             <textarea id="analysisDiv" class="form-control animated"></textarea>
         </div>
     </div>
@@ -83,6 +86,25 @@
 
   <!-- Bootstrap JS -->
   <script src="/js/bootstrap.min.js"></script>
+
+  <!-- Chart JS -->
+  <script src="scripts/Chart.js"></script>
+
+  <script>
+      var ctx = document.getElementById("myChart");
+
+      var myChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+              datasets: [{
+                  data: [10, 20, 30]
+              }],
+
+              labels: ['Red', 'Yellow', 'Blue']
+          },
+          options: options
+      });
+  </script>
 
   <!-- AutoResize -->
     <script src="javascripts/autoResize-textArea.js"></script>
