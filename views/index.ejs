@@ -69,6 +69,8 @@
 
 <%include partials/footer.ejs%>
 
+  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
   <!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
@@ -86,25 +88,6 @@
 
   <!-- Bootstrap JS -->
   <script src="/js/bootstrap.min.js"></script>
-
-  <!-- Chart JS -->
-  <script src="scripts/Chart.js"></script>
-
-  <script>
-      var ctx = document.getElementById("myChart");
-
-      var myChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-              datasets: [{
-                  data: [10, 20, 30]
-              }],
-
-              labels: ['Red', 'Yellow', 'Blue']
-          },
-          options: options
-      });
-  </script>
 
   <!-- AutoResize -->
     <script src="javascripts/autoResize-textArea.js"></script>

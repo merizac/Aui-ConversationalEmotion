@@ -162,10 +162,34 @@ function RecognizerStart(SDK, recognizer) {
           var text = phraseDiv.value;
           var url = '/tone-analyzer?text='+text;
 
+          var ctx = document.getElementById("myChart");
+
           $.get(url, function(responseText) {
-            //phraseDiv.innerHTML = "";
             analysisDiv.innerHTML += JSON.stringify(responseText);
+
+              var tones = responseText.document_tone.tone_categories[0].tones;
+
+              var myChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                      datasets: [{
+                          data: [tones[0].score,
+                                 tones[1].score,
+                                 tones[2].score,
+                                 tones[3].score,
+                                 tones[4].score]
+                      }],
+
+                      labels: [tones[0].tone_name,
+                               tones[1].tone_name,
+                               tones[2].tone_name,
+                               tones[3].tone_name,
+                               tones[4].tone_name]
+                  },
+
+              });
           });
+
         })
 
         stopBtn.addEventListener("click", function () {
