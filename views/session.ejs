@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title></title>
+    <meta name="description" content="">
+
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <!-- Include Modernizr in the head, before any other Javascript -->
+    <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <div>
+        <%include partials/header.ejs%>
+    </div>
+
+    <% for(var i=0; i < data.length; i++) { %>
+        <p><%= data[i].emotion %></p>
+    <% } %>
+
+    <% data.forEach(function(elem){%>
+        <p><%= elem.emotion %></p>
+    <%})%>
+
+    <div class="row top-video-row">
+        <div class="col-sm-5">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video controls id="video2" class="embed-responsive-item video">
+                    <source src="/video/joy" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group radio-button-video">
+                <input name="opt-video" type="radio" id="radio2">
+            </div>
+        </div>
+    </div>
+    <div class="row top-video-row">
+        <div class="col-sm-5">
+            <div class="embed-responsive embed-responsive-16by9">
+                <video controls id="video3" class="embed-responsive-item video">
+                    <source src="/video/joy" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group radio-button-video">
+                <input name="opt-video" type="radio" id="radio3">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<%include partials/footer.ejs%>
+
+
+<!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
+
+
+<!-- First try for the online version of jQuery-->
+<script src="http://code.jquery.com/jquery.js"></script>
+
+<!-- If no online access, fallback to our hardcoded version of jQuery -->
+<script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
+<!-- Bootstrap JS -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- AutoResize -->
+<script src="javascripts/autoResize-textArea.js"></script>
+
+<script>
+    $(function(){
+        $('.normal').autosize();
+        $('.animated').autosize({append: "\n"});
+    });
+</script>
+
+<!-- Custom JS -->
+
+
+</body>
+</html>

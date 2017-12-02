@@ -57,3 +57,24 @@ a {
   }
 
 /*--- end index.ejs ---*/
+
+/*--- session.ejs ---*/
+
+  /*--- video ---*/
+  .video{
+    horiz-align: left;
+    max-width : 400px;
+    max-height: 400px;
+  }
+  /*--- end video ---*/
+
+  /*--- radio-button-video ---*/
+  .radio-button-video{
+      position: absolute;
+      top: 100px;
+  }
+
+  .top-video-row{ margin-top: 20px;}
+  /*--- radio-button-video ---*/
+
+/*--- end session.ejs ---*/
