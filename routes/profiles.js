@@ -10,7 +10,6 @@ var user = new Schema({
     age: {type: Number, min:0, max:99, required: true},
     disabilityDescription: String,
     notes: String,
-
     //picture:
 });
 
@@ -49,10 +48,18 @@ function onInsert(err, docs) {
     }
 }
 
+/*document.addEventListener("DOMContentLoaded", function () {
+    newUser = document.getElementById("addProfile");
+});
+
+/*newUser.addEventListener("click", function(){
+
+})*/
+
 module.exports = router;
 
 
 router.get('/', function(req, res, next){
    // res.send(users);
-    res.render('profiles');
+    res.render('profiles', { users: users });
 });
