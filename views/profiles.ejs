@@ -2,21 +2,53 @@
 
 <html>
 <head>
+    <!-- Website Title & Description for Search Engine purposes -->
+    <title>Children's profiles</title>
 
+    <!-- Mobile viewport optimized -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <!-- Include Modernizr in the head, before any other Javascript -->
+    <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
 </head>
 
-<body>
+<body background="https://media.wired.com/photos/59371d19ca941e4d0cb7ce7f/master/w_1200,c_limit/ap_insideout_ff1.jpg">
 
 <div class="container">
 <div>
     <%include partials/header.ejs%>
 </div>
+
+    <button type="button" class="btn btn-danger btn-lg" id="addProfile"><p>Nuovo \nutente!</p></button>
+
+
+    <div class="row" id="users">
+    <% users.forEach(function(elem){%>
+        <div class="col-sm-3 col-md-3">
+            <div class="thumbnail">
+                <img width="150px" src="http://www.innovatoripa.it/sites/default/files/styles/user_full/public/default_images/765-default-avatar_4.png?itok=-1-90-7C" class="img-responsive">
+                <div class="caption">
+                    <h3><%= elem.name %></h3>
+                    <p> <a href="/index" class="btn btn-primary" role="button" id="prof"> NUOVA SESSIONE </a>
+                        <a href="/profiles" class="btn btn-default" role="button">VISUALIZZA</a></p>
+                </div>
+            </div>
+        </div>
+    <%})%>
     </div>
+
 
 
 <div>
 <%include partials/footer.ejs%>
 </div>
+
 
 </body>
 </html>

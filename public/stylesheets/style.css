@@ -78,3 +78,17 @@ a {
   /*--- radio-button-video ---*/
 
 /*--- end session.ejs ---*/
+
+
+/*--- profiles.ejs ---*/
+
+/*--- bottone new session ---*/
+#prof{
+  left: 50%;
+  text-align: center;
+}
+/*--- end bottone new session ---*/
+
+/*--- users ---*/
+#users{ margin-top: 50px;}
+/*--- end users ---*/
