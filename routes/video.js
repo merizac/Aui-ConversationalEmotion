@@ -7,12 +7,13 @@ var fs = require('fs');
 var Grid = require('gridfs-stream');
 Grid.mongo = mongoose.mongo;
 var gfs;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect("mongodb://127.0.0.1:27017/test", {
     useMongoClient:true
 });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    console.log("session");
     //res.render('new-session');
 });
 
@@ -23,7 +24,7 @@ conn.once("open", function(){
 
     var db = conn.db;
 
-    router.get('/video/:emotion', function(req, res){
+    router.get('/:emotion', function(req, res){
 
         var filename=[];
         db.collection("fs.files")
@@ -42,8 +43,7 @@ conn.once("open", function(){
                         return res.status(400).send({message: "File not found"});
                     }
                     var data = [];
-                    var i = Math.random() * 6;
-                    console.log("Random : " + i);
+                    var i = Math.floor(Math.random() * (filename.length-1));
                     var readstream = gfs.createReadStream({
                         filename: files[0].filename
                     });
@@ -79,7 +79,7 @@ conn.once("open", function(){
 
     });
 
-    router.post('/upload-video', function (req, res) {
+    router.post('/upload', function (req, res) {
         var part = req.files.file;
         var emotion = req.body.emotion;
         var writestream = gfs.createWriteStream({
