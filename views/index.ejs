@@ -51,16 +51,31 @@
 
     <div class="row top-buffer" id="analysisRow">
         <div class="col-sm-2">
-            <button type="button" class="btn btn-primary btn-lg" id="analyzeBtn" disabled="disabled">Analyze</button>
+            <button type="button" class="btn btn-primary btn-lg" id="analyzeBtn" disabled="disabled">Analisi</button>
+        </div>
+    </div>
+
+    <div class="container" id="chartContainer">
+        <div class="row top-buffer">
+            <div class="col-sm-3"></div>
+
+            <div class="col-sm-6">
+                <canvas id="myChart"></canvas>
+                <!--<textarea id="analysisDiv" class="form-control animated"></textarea>-->
+            </div>
+
+            <div class="col-sm-3"></div>
         </div>
     </div>
 
     <div class="row top-buffer">
-        <div class="col-sm-5">
-
-            <canvas id="myChart"></canvas>
-
-            <textarea id="analysisDiv" class="form-control animated"></textarea>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="numberVideos">Seleziona il numero di video da proporre:</label>
+                <input type="text" class="form-control" id="numberVideos">
+            </div>
+            
+            <button type="button" class="btn btn-primary btn-lg" id="goToVideosBtn" disabled="disabled">Prosegui</button>
         </div>
     </div>
 

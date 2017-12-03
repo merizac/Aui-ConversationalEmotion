@@ -165,28 +165,41 @@ function RecognizerStart(SDK, recognizer) {
           var ctx = document.getElementById("myChart");
 
           $.get(url, function(responseText) {
-            analysisDiv.innerHTML += JSON.stringify(responseText);
+            //analysisDiv.innerHTML += JSON.stringify(responseText);
 
               var tones = responseText.document_tone.tone_categories[0].tones;
 
               var myChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
+
+                      labels: [tones[0].tone_name,
+                          tones[1].tone_name,
+                          tones[2].tone_name,
+                          tones[3].tone_name,
+                          tones[4].tone_name],
+
                       datasets: [{
                           data: [tones[0].score,
                                  tones[1].score,
                                  tones[2].score,
                                  tones[3].score,
-                                 tones[4].score]
+                                 tones[4].score],
+
+                          backgroundColor: [
+                              'rgba(242, 22, 22, 1)',
+                              'rgba(28, 178, 20, 1)',
+                              'rgba(147, 75, 235, 1)',
+                              'rgba(255, 251, 71, 1)',
+                              'rgba(39, 57, 194, 1)'
+                          ]
                       }],
 
-                      labels: [tones[0].tone_name,
-                               tones[1].tone_name,
-                               tones[2].tone_name,
-                               tones[3].tone_name,
-                               tones[4].tone_name]
                   },
 
+                  options: {
+                      responsive: true
+                  }
               });
           });
 
