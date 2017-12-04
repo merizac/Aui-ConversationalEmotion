@@ -36,14 +36,15 @@ conn.once("open", function(){
                     filename.push(file.filename);
                 });
 
+                var index = Math.floor(Math.random() * filename.length);
                 gfs.files.find({
-                    filename: filename[0]
+                    filename: filename[index]
                 }).toArray(function(err, files){
                     if(files.length==0){
                         return res.status(400).send({message: "File not found"});
                     }
                     var data = [];
-                    var i = Math.floor(Math.random() * (filename.length-1));
+
                     var readstream = gfs.createReadStream({
                         filename: files[0].filename
                     });
