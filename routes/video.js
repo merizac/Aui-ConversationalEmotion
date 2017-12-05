@@ -44,7 +44,6 @@ conn.once("open", function(){
                         return res.status(400).send({message: "File not found"});
                     }
                     var data = [];
-
                     var readstream = gfs.createReadStream({
                         filename: files[0].filename
                     });
