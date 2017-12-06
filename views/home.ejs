@@ -3,9 +3,57 @@
 <html>
 <head>
 
+    <!-- Custom CSS -->
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-    ciao
+    <div class="container-fluid" id="carouselContainer">
+
+        <div>
+            <%include partials/header-home.ejs%>
+        </div>
+
+        <div class="carousel slide" id="homeCarousel">
+
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#homeCarousel"></li>
+                <li data-slide-to="1" data-target="#homeCarousel"></li>
+                <li data-slide-to="2" data-target="#homeCarousel"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item active" id="slide1">
+                    <div class="carousel-caption">
+                        <h3>Esprimi le tue emozioni.</h3>
+                    </div>
+                </div>
+
+                <div class="item" id="slide2">
+                    <div class="carousel-caption">
+                        <h3>Aumenta la tua empatia.</h3>
+                    </div>
+                </div>
+
+                <div class="item" id="slide3">
+                    <div class="carousel-caption">
+                        <h3 id="lastSlide">Monitora i tuoi progressi.</h3>
+                    </div>
+                </div>
+            </div>
+
+            <a class="left carousel-control" data-slide="prev" href="#homeCarousel"><span class="icon-prev"></span></a>
+            <a class="right carousel-control" data-slide="next" href="#homeCarousel"><span class="icon-next"></span></a>
+
+        </div>
+
+    </div>
 </body>
 </html>

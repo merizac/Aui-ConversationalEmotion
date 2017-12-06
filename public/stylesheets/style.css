@@ -6,7 +6,9 @@ a {
   color: white;
 }
 
-/*--- index.ejs ---*/
+/*---------------------------
+          index.ejs
+ --------------------------*/
 
   /* --- navbar --- */
   .navbar {
@@ -36,7 +38,6 @@ a {
       transform: translatex(-50%);
     }
   }
-  /*--- end navbar ---*/
 
 
   /*--- textArea ---*/
@@ -52,6 +53,7 @@ a {
   #analysisRow {margin-top: 60px;}
 
   #chartContainer {margin-top: 60px;}
+
   /*--- stopBtn ---*/
   #stopBtn {
     margin-left: 10px;
@@ -63,7 +65,44 @@ a {
     height: auto;
   }
 
-/*--- end index.ejs ---*/
+/*---------------------------
+          home.ejs
+ --------------------------*/
+
+  /*--- carousel ---*/
+  #carouselContainer {max-width: 1000px;}
+
+  #homeCarousel .item {
+    height: 625px;
+  }
+
+  #homeCarousel {
+    margin-top: 0px;
+  }
+
+  #homeCarousel .carousel-caption h3{
+    padding-bottom: 450px;
+    padding-right: 160px;
+    text-align: left;
+    font-size: 40px;
+    font-style: italic;
+  }
+
+  #lastSlide {color: black;}
+
+  #slide1{
+    background: url('../images/insideout-01.jpg') top center no-repeat;
+  }
+
+  #slide2{
+    background: url('../images/video.jpg') top center no-repeat;
+  }
+
+  #slide3{
+    background: url('../images/progress-chart.jpg') top center no-repeat;
+  }
+  /*--- end carousel ---*/
+
 
 /*--- session.ejs ---*/
 

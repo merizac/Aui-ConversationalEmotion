@@ -15,6 +15,7 @@ var home = require('./routes/home');
 var session = require('./routes/session');
 var video = require('./routes/video');
 var profiles =  require('./routes/profiles');
+var all_videos = require('./routes/all_videos');
 
 
 var app = express();
@@ -47,6 +48,7 @@ app.use('/home', home);
 app.use('/session', session);
 app.use('/video', video);
 app.use('/profiles', profiles);
+app.use('/all_videos', all_videos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
