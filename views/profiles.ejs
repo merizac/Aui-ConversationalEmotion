@@ -108,8 +108,8 @@
             var description = document.getElementById("disabilityDescription");
             var notes = document.getElementById("notes");
             var elements = document.querySelectorAll('a[id="delete"]');
+            var enters = document.querySelectorAll('a[id="enter"]');
 
-            console.log(elements);
             btn.onclick = function () {
 
                 // When the user clicks on the button, open the modal
@@ -129,6 +129,12 @@
                         id: id
                     });
                 };
+            });
+
+            enters.forEach(function(elem){
+                elem.onclick= function(elem){
+                    $.get("http://localhost:3000/profiles/user?id="+elem.target.getAttribute("child"));
+                }
             });
 
         });
