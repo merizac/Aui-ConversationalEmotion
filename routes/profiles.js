@@ -69,5 +69,12 @@ router.post('/insert', function(req, res, next){
     res.send("success");
 });
 
+router.post('/delete', function(req, res, next){
+    console.log(req.body.id);
+    var id= req.body.id;
+    userData.findByIdAndRemove(id).exec();
+    res.redirect('/profiles');
+});
+
 
 module.exports = router;
