@@ -16,7 +16,7 @@ var user = new Schema({
 
 var userData = mongoose.model('UserData', user);
 
-var users = [{
+/*var users = [{
         "name" : "Maria Chiara",
         "surname" : "Zaccardi",
         "age" : "23",
@@ -35,7 +35,7 @@ var users = [{
         "notes" : "ciao"}
   ];
 
-/*
+
 userData.collection.insert(users, onInsert);
 */
 
@@ -50,8 +50,11 @@ function onInsert(err, docs) {
 
 router.get('/', function(req, res, next){
    // res.send(users);
+    userData.find()
+        .then(function(users){
+            res.render('profiles', { users: users });
+        });
 
-    res.render('profiles', { users: users });
 });
 
 router.post('/insert', function(req, res, next){
