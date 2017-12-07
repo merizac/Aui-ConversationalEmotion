@@ -8,8 +8,16 @@
     <!-- Mobile viewport optimized -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <!--<script src="collections/collections.min.js">-->
+    <!-- First try for the online version of jQuery-->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+    <!-- If no online access, fallback to our hardcoded version of jQuery -->
+    <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js" ></script>
 
     <!-- Custom CSS -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -25,8 +33,8 @@
         <%include partials/header.ejs%>
     </div>
 
-    <button type="button" class="btn btn-danger btn-lg" id="addProfile"><p>Nuovo \nutente!</p></button>
-
+    <button type="button" id="addProfile" href="#" class="btn btn-danger btn-lg" role="button" data-toggle="modal" data-target="#registerModal">Nuovo <br> utente!
+        </button>
 
     <div class="row" id="users">
     <% users.forEach(function(elem){%>
@@ -44,11 +52,77 @@
     </div>
 
 
+    <!-- BEGIN # MODAL INSERT -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <img class="img-circle" id="img_logo" src="https://cdn4.iconfinder.com/data/icons/social-communication/142/add_user-512.png">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+
+
+                        <div class="modal-body" id="register-form">
+                            <div id="div-login-msg">
+                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-login-msg">Insert data for new user!</span>
+                            </div>
+                            <input id="name" class="form-control" type="text" placeholder="Name" required>
+                            <input id="surname" class="form-control" type="text" placeholder="Surname" required>
+                            <input id="age" class="form-control" type="Number" placeholder="Age" required>
+                            <input id="disabilityDescription" class="form-control" type="text" placeholder="Description of the disability" >
+                            <input id="notes" class="form-control" type="text" placeholder="Insert here notes" >
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <div>
+                                <button id="submit" type="submit" data-dismiss="modal" class="btn btn-primary btn-lg btn-block">Register</button>
+                            </div>
+                        </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- END # MODAL LOGIN -->
+
 
     <div>
     <%include partials/footer.ejs%>
     </div>
 
+    <script>
+
+        $("document").ready(
+            function(){
+
+            var btn = document.getElementById("submit");
+            var name = document.getElementById("name");
+            var surname = document.getElementById("surname");
+            var age = document.getElementById("age");
+            var description = document.getElementById("disabilityDescription");
+            var notes = document.getElementById("notes");
+
+
+            btn.onclick = function () {
+
+                // When the user clicks on the button, open the modal
+                $.post("http://localhost:3000/profiles/insert", {
+                        name: name.value,
+                        surname: surname.value,
+                        age: age.value,
+                        disabilityDescription: description.value,
+                        notes: notes.value
+                    });
+
+            }
+        });
+
+    </script>
 
 </div>
 </body>

@@ -6,7 +6,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Speech Sample' });
 });
 
-
-
-
 module.exports = router;

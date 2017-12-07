@@ -4,21 +4,18 @@ var mongoose = require('mongoose');
 mongoose.connect('localhost:3000/profiles.ejs');
 var Schema = mongoose.Schema;
 
+
 var user = new Schema({
-   name: {type: String, required: true},
-   surname: {type: String, required: true},
+    name: {type: String, required: true},
+    surname: {type: String, required: true},
     age: {type: Number, min:0, max:99, required: true},
     disabilityDescription: String,
     notes: String,
-    //picture:
+    //picture?
 });
 
-
-
-
-
-
 var userData = mongoose.model('UserData', user);
+
 var users = [{
         "name" : "Maria Chiara",
         "surname" : "Zaccardi",
@@ -38,28 +35,36 @@ var users = [{
         "notes" : "ciao"}
   ];
 
+/*
 userData.collection.insert(users, onInsert);
+*/
 
 function onInsert(err, docs) {
     if (err) {
         // TODO: handle error
     } else {
-        console.info('%d users were successfully stored.', docs.length);
+        console.info('Users were successfully stored.');
     }
 }
-
-/*document.addEventListener("DOMContentLoaded", function () {
-    newUser = document.getElementById("addProfile");
-});
-
-/*newUser.addEventListener("click", function(){
-
-})*/
-
-module.exports = router;
 
 
 router.get('/', function(req, res, next){
    // res.send(users);
+
     res.render('profiles', { users: users });
 });
+
+router.post('/insert', function(req, res, next){
+    var newUser = {
+        "name": req.body.name,
+        "surname": req.body.surname,
+        "age": req.body.age,
+        "disabilityDescription": req.body.description,
+        "notes": req.body.notes
+    };
+    userData.collection.insert(newUser, onInsert);
+    res.send("success");
+});
+
+
+module.exports = router;
