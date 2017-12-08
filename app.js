@@ -7,6 +7,18 @@ var bodyParser = require('body-parser');
 var busboy_body_parser = require('busboy-body-parser');
 var debug = require('debug')('aui-project:app');
 var dotenv = require('dotenv').config();
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads')
+    },
+    filename: function (req, file, cb) {
+        var extArray = file.mimetype.split("/");
+        var extension = extArray[extArray.length - 1];
+        var filename = file.originalname.split(".")[0];
+        cb(null, filename + '-' + Date.now()+ '.' +extension)
+    }
+})
 
 var index = require('./routes/index');
 var tone_analyzer = require('./routes/tone-analyzer');
@@ -23,6 +35,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(multer({ storage : storage}).any());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

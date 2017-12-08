@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var _ = require('underscore');
+var request = require('request');
+var async = require('async');
+
+function httpGet(url, callback) {
+    const options = {
+        url :  url,
+        json : true
+    };
+    request(options,
+        function(err, res, body) {
+            callback(err, body);
+        }
+    );
+}
 
 /* GET session. */
 router.get('/', function(req, res, next) {
@@ -12,13 +26,29 @@ router.get('/', function(req, res, next) {
 
     var param = '{"emotions" : []}';
     var parse_param = JSON.parse(param);
-    parse_param['emotions'].push({"emotion": emotion, "right": true});
+    parse_param['emotions'].push({"emotion": emotion, "right": true });
     emotions.forEach(function(emotion){
-       parse_param['emotions'].push({"emotion" : emotion, "right" : false});
+        parse_param['emotions'].push({"emotion" : emotion, "right" : false });
     });
 
+
     parse_param=_.shuffle(parse_param['emotions']);
-    res.render('session', { data : parse_param});
+
+    var urls = [];
+
+    parse_param.forEach(function(param){
+        urls.push("http://localhost:3000/video/thumbnail/"+ param.emotion);
+    });
+
+    async.map(urls, httpGet, function (err, result){
+        if (err) return console.log(err);
+        for (i=0; i< parse_param.length; i++){
+            parse_param[i].filename = result[i];
+        }
+        res.render('session', {data : parse_param});
+    });
+
+
 
 });
 

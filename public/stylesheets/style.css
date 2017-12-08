@@ -121,7 +121,90 @@ a {
   }
 
   .top-video-row{ margin-top: 20px;}
-  /*--- radio-button-video ---*/
+  /*--- end radio-button-video ---*/
+
+  /*--- modal ---*/
+
+      #MyImage {
+        position: relative;
+        margin: 20px auto 0;
+        width: 100%;
+        max-width: 400px;
+      }
+      #theImage {
+        display: block;
+        position: relative;
+        width: 100%;
+      }
+      #myButton {
+        position: absolute;
+        left: 170px;
+        top: 120px;
+        text-align: center;
+      }
+    a .video-link-icon {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      background: #4169E1;
+      color: #fff;
+      line-height: 50px;
+      -moz-border-radius: 50%; -webkit-border-radius: 50%; border-radius: 50%;
+      -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    }
+
+    a:hover .video-link-icon,
+    a:focus .video-link-icon {
+      outline: 0;
+      background: #fff;
+      color: #4169E1;
+    }
+
+    .modal-backdrop.in {
+      filter: alpha(opacity=7);
+      opacity: 0.9;
+    }
+
+    .modal-content {
+      background: none;
+      border: 0;
+      -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+      -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    }
+
+    .modal-body {
+      padding: 0 25px 25px 25px;
+    }
+
+    .modal-header {
+      padding: 25px 25px 15px 25px;
+      text-align: right;
+    }
+
+    .modal-header, .modal-footer {
+      border: 0;
+    }
+
+    .modal-header .close {
+      float: none;
+      margin: 0;
+      font-size: 36px;
+      color: #fff;
+      font-weight: 300;
+      text-shadow: none;
+      opacity: 1;
+    }
+  @media (min-width: 768px) {
+    .modal-dialog {
+      width: 800px;
+      margin: 30px auto;
+    }
+  }
+
+
+    /*--- end modal ---*/
 
 /*--- end session.ejs ---*/
 
