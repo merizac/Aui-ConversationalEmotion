@@ -26,115 +26,118 @@
     <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
 </head>
 
-<body background="https://media.wired.com/photos/59371d19ca941e4d0cb7ce7f/master/w_1200,c_limit/ap_insideout_ff1.jpg">
+<!--<body background="https://media.wired.com/photos/59371d19ca941e4d0cb7ce7f/master/w_1200,c_limit/ap_insideout_ff1.jpg">-->
+<body>
+    <div class="container">
+        <div>
+            <%include partials/header.ejs%>
+        </div>
 
-<div class="container">
-    <div>
-        <%include partials/header.ejs%>
-    </div>
+        <button type="button" id="addProfile" href="#" class="btn btn-success btn-lg" role="button" data-toggle="modal" data-target="#registerModal">Nuovo utente</button>
 
-    <button type="button" id="addProfile" href="#" class="btn btn-danger btn-lg" role="button" data-toggle="modal" data-target="#registerModal">Nuovo <br> utente!
-        </button>
+        <div class="row" id="users">
+            <% users.forEach(function(elem){%>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <img width="150px" src="http://www.innovatoripa.it/sites/default/files/styles/user_full/public/default_images/765-default-avatar_4.png?itok=-1-90-7C" class="img-responsive">
+                        <div class="caption">
+                            
+                            <h3 id="<%= elem._id%>"><%= elem.name %></h3>
 
-    <div class="row" id="users">
-    <% users.forEach(function(elem){%>
-        <div class="col-sm-3 col-md-3">
-            <div class="thumbnail">
-                <img width="150px" src="http://www.innovatoripa.it/sites/default/files/styles/user_full/public/default_images/765-default-avatar_4.png?itok=-1-90-7C" class="img-responsive">
-                <div class="caption">
-                    <h3 id="<%= elem._id%>"><%= elem.name %></h3>
-                    <p> <a href="#" id="enter" child="<%= elem._id%>" class="btn btn-primary" role="button" id="prof"> ENTRA </a>
-                        <a href="#" id="delete" child="<%= elem._id%>" class="btn btn-default btn-danger" role="button">ELIMINA</a>
-                    </p>
+                            <div class="btn-toolbar">
+                                <a href="#" id="enter" child="<%= elem._id%>" class="btn btn-primary" role="button" id="prof"> VISUALIZZA </a>
+                                <a href="#" id="delete" child="<%= elem._id%>" class="btn btn-default btn-danger" role="button">ELIMINA</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <%})%>
+        </div>
+
+
+        <!-- BEGIN # MODAL INSERT -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" align="center" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" align="center">
+                        <img class="img-circle" id="img_logo" src="https://cdn4.iconfinder.com/data/icons/social-communication/142/add_user-512.png">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+
+
+                            <div class="modal-body" id="register-form">
+                                <div id="div-login-msg">
+                                    <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-login-msg">Crea un nuovo profilo</span>
+                                </div>
+                                <input id="name" class="form-control" type="text" placeholder="Nome" required>
+                                <input id="surname" class="form-control" type="text" placeholder="Cognome" required>
+                                <input id="age" class="form-control" type="Number" placeholder="Età" required>
+                                <input id="disabilityDescription" class="form-control" type="text" placeholder="Descrizione disabilità" >
+                                <input id="notes" class="form-control" type="text" placeholder="Note aggiungtive" >
+
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <div>
+                                    <button id="submit" type="submit" data-dismiss="modal" class="btn btn-primary btn-lg btn-block">Conferma</button>
+                                </div>
+                            </div>
+
+
+
                 </div>
             </div>
         </div>
-    <%})%>
-    </div>
+        <!-- END # MODAL LOGIN -->
 
 
-    <!-- BEGIN # MODAL INSERT -->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" align="center" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" align="center">
-                    <img class="img-circle" id="img_logo" src="https://cdn4.iconfinder.com/data/icons/social-communication/142/add_user-512.png">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-
-
-                        <div class="modal-body" id="register-form">
-                            <div id="div-login-msg">
-                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-login-msg">Insert data for new user!</span>
-                            </div>
-                            <input id="name" class="form-control" type="text" placeholder="Name" required>
-                            <input id="surname" class="form-control" type="text" placeholder="Surname" required>
-                            <input id="age" class="form-control" type="Number" placeholder="Age" required>
-                            <input id="disabilityDescription" class="form-control" type="text" placeholder="Description of the disability" >
-                            <input id="notes" class="form-control" type="text" placeholder="Insert here notes" >
-
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <div>
-                                <button id="submit" type="submit" data-dismiss="modal" class="btn btn-primary btn-lg btn-block">Register</button>
-                            </div>
-                        </div>
-
-
-
-            </div>
+        <div>
+        <%include partials/footer.ejs%>
         </div>
-    </div>
-    <!-- END # MODAL LOGIN -->
 
+        <script>
 
-    <div>
-    <%include partials/footer.ejs%>
-    </div>
+            $("document").ready(
+                function(){
 
-    <script>
+                var btn = document.getElementById("submit");
+                var name = document.getElementById("name");
+                var surname = document.getElementById("surname");
+                var age = document.getElementById("age");
+                var description = document.getElementById("disabilityDescription");
+                var notes = document.getElementById("notes");
+                var elements = document.querySelectorAll('a[id="delete"]');
 
-        $("document").ready(
-            function(){
+                console.log(elements);
+                btn.onclick = function () {
 
-            var btn = document.getElementById("submit");
-            var name = document.getElementById("name");
-            var surname = document.getElementById("surname");
-            var age = document.getElementById("age");
-            var description = document.getElementById("disabilityDescription");
-            var notes = document.getElementById("notes");
-            var elements = document.querySelectorAll('a[id="delete"]');
+                    // When the user clicks on the button, open the modal
+                    $.post("http://localhost:3000/profiles/insert", {
+                            name: name.value,
+                            surname: surname.value,
+                            age: age.value,
+                            disabilityDescription: description.value,
+                            notes: notes.value
+                        });
+                }
 
-            console.log(elements);
-            btn.onclick = function () {
+                elements.forEach(function(elem){
+                    elem.onclick = function(elem){
+                       var id = elem.target.getAttribute("child");
+                        $.post("http://localhost:3000/profiles/delete", {
+                            id: id
+                        });
+                    };
+                });
 
-                // When the user clicks on the button, open the modal
-                $.post("http://localhost:3000/profiles/insert", {
-                        name: name.value,
-                        surname: surname.value,
-                        age: age.value,
-                        disabilityDescription: description.value,
-                        notes: notes.value
-                    });
-            }
-
-            elements.forEach(function(elem){
-                elem.onclick = function(elem){
-                   var id = elem.target.getAttribute("child");
-                    $.post("http://localhost:3000/profiles/delete", {
-                        id: id
-                    });
-                };
             });
 
-        });
+        </script>
 
-    </script>
-
-</div>
+    </div>
 </body>
 </html>
