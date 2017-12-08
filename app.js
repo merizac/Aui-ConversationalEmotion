@@ -20,7 +20,7 @@ var storage = multer.diskStorage({
     }
 })
 
-var index = require('./routes/index');
+var session1 = require('./routes/session1');
 var tone_analyzer = require('./routes/tone-analyzer');
 var key = require('./routes/key');
 var home = require('./routes/home');
@@ -57,7 +57,7 @@ app.use('/fonts/', express.static(path.join(__dirname, 'node_modules/bootstrap/d
 app.use('/', home);
 app.use('/tone-analyzer', tone_analyzer);
 app.use('/key', key);
-app.use('/session1', index);
+app.use('/session1', session1);
 app.use('/session2', session);
 app.use('/video', video);
 app.use('/profiles', profiles);

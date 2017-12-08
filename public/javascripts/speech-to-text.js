@@ -159,6 +159,11 @@ function RecognizerStart(SDK, recognizer) {
         });
 
         analyzeBtn.addEventListener("click", function(){
+          startBtn.disabled = true;
+          analyzeBtn.disabled = true;
+
+          document.getElementById('prosegui').style.display = "block";
+
           var text = phraseDiv.value;
           var url = '/tone-analyzer?text='+text;
 
