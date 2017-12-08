@@ -136,6 +136,49 @@
 
             });
 
+    <script>
+
+        $("document").ready(
+            function(){
+
+            var btn = document.getElementById("submit");
+            var name = document.getElementById("name");
+            var surname = document.getElementById("surname");
+            var age = document.getElementById("age");
+            var description = document.getElementById("disabilityDescription");
+            var notes = document.getElementById("notes");
+            var elements = document.querySelectorAll('a[id="delete"]');
+            var enters = document.querySelectorAll('a[id="enter"]');
+
+            btn.onclick = function () {
+
+                // When the user clicks on the button, open the modal
+                $.post("http://localhost:3000/profiles/insert", {
+                        name: name.value,
+                        surname: surname.value,
+                        age: age.value,
+                        disabilityDescription: description.value,
+                        notes: notes.value
+                    });
+            }
+
+            elements.forEach(function(elem){
+                elem.onclick = function(elem){
+                   var id = elem.target.getAttribute("child");
+                    $.post("http://localhost:3000/profiles/delete", {
+                        id: id
+                    });
+                };
+            });
+
+            enters.forEach(function(elem){
+                elem.onclick= function(elem){
+                    $.get("http://localhost:3000/profiles/user?id="+elem.target.getAttribute("child"));
+                }
+            });
+
+        });
+
         </script>
 
     </div>

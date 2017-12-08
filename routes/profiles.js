@@ -1,20 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-mongoose.connect('localhost:3000/profiles.ejs');
-var Schema = mongoose.Schema;
 
+var url = require('url');
 
-var user = new Schema({
-    name: {type: String, required: true},
-    surname: {type: String, required: true},
-    age: {type: Number, min:0, max:99, required: true},
-    disabilityDescription: String,
-    notes: String,
-    //picture?
-});
-
-var userData = mongoose.model('UserData', user);
+var userData = require('../models/user_model');
 
 /*var users = [{
         "name" : "Maria Chiara",
@@ -76,5 +65,13 @@ router.post('/delete', function(req, res, next){
     res.redirect('/profiles');
 });
 
+router.get('/user', function(req, res, next){
+    res.redirect(url.format({
+        pathname : "/user",
+        query : {
+            id : req.query.id
+        }
+    }));
+});
 
 module.exports = router;
