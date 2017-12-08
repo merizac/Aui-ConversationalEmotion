@@ -66,12 +66,13 @@ router.post('/delete', function(req, res, next){
 });
 
 router.get('/user', function(req, res, next){
-    res.redirect(url.format({
+     res.redirect(url.format({
         pathname : "/user",
         query : {
             id : req.query.id
         }
     }));
+
 });
 
 module.exports = router;
