@@ -128,8 +128,10 @@ function RecognizerStart(SDK, recognizer) {
         recognizer.AudioSource.TurnOff();
       }
 
-      var startBtn, stopBtn, hypothesisDiv, phraseDiv, statusDiv;
-      var key, formatOptions;
+      var startBtn, stopBtn, hypothesisDiv,
+          phraseDiv, videoBtn, createBtn, analyzeBtn,
+          myChart;
+      var key;
       var SDK;
       var recognizer;
 
@@ -140,7 +142,9 @@ function RecognizerStart(SDK, recognizer) {
         analyzeBtn = document.getElementById("analyzeBtn");
         phraseDiv = document.getElementById("phraseDiv");
         hypothesisDiv = document.getElementById("hypothesisDiv");
-        //statusDiv = document.getElementById("statusDiv");
+        videoBtn = document.getElementById("goToVideosBtn");
+
+
         $.get('/key?service=STT', function(response){
           key=response;
         });
@@ -170,19 +174,18 @@ function RecognizerStart(SDK, recognizer) {
           var ctx = document.getElementById("myChart");
 
           $.get(url, function(responseText) {
-            //analysisDiv.innerHTML += JSON.stringify(responseText);
 
               var tones = responseText.document_tone.tone_categories[0].tones;
 
-              var myChart = new Chart(ctx, {
+              myChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
 
-                      labels: [tones[0].tone_name,
-                          tones[1].tone_name,
-                          tones[2].tone_name,
-                          tones[3].tone_name,
-                          tones[4].tone_name],
+                      labels: [tones[0].tone_id,
+                          tones[1].tone_id,
+                          tones[2].tone_id,
+                          tones[3].tone_id,
+                          tones[4].tone_id],
 
                       datasets: [{
                           data: [tones[0].score,
@@ -207,6 +210,19 @@ function RecognizerStart(SDK, recognizer) {
                   }
               });
           });
+
+        });
+
+        videoBtn.addEventListener("click", function(){
+            var emotions =myChart.data.labels;
+            var data = myChart.data.datasets[0].data;
+            var largest = Math.max.apply(Math, data);
+            var arr = Array.prototype.slice.call(data);
+            var emotion = emotions[arr.indexOf(largest)];
+            var sel = document.getElementById("numberVideos");
+            var numVideo= sel.options[sel.selectedIndex].text;
+
+            location.href="/session2?emotion="+ emotion +"&num_video=" + numVideo;
 
         })
 
