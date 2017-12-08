@@ -54,11 +54,11 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/fonts/', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/fonts'))); //redirect bootstrap glyphicons
 
 //routes to render pages
-app.use('/', index);
+app.use('/', home);
 app.use('/tone-analyzer', tone_analyzer);
 app.use('/key', key);
-app.use('/home', home);
-app.use('/session', session);
+app.use('/session1', index);
+app.use('/session2', session);
 app.use('/video', video);
 app.use('/profiles', profiles);
 app.use('/all_videos', all_videos);
