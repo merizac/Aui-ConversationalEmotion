@@ -1,5 +1,6 @@
 body {
   padding: 70px;
+  background-color: rgba(153, 204, 255, 0.3) !important;
 }
 
 a {
@@ -12,7 +13,7 @@ a {
 
   /* --- navbar --- */
   .navbar {
-    background-color: #709dff;
+    background-color: #0066FF;
   }
 
   .navbar .navbar-brand {
@@ -82,7 +83,7 @@ a {
 
   #homeCarousel .carousel-caption h3{
     padding-bottom: 450px;
-    padding-right: 160px;
+    padding-right: 170px;
     text-align: left;
     font-size: 40px;
     font-style: italic;
@@ -104,7 +105,11 @@ a {
   /*--- end carousel ---*/
 
 
-/*--- session.ejs ---*/
+
+
+/*---------------------------
+          session2.ejs
+ --------------------------*/
 
   /*--- video ---*/
   .video{
@@ -112,7 +117,6 @@ a {
     max-width : 400px;
     max-height: 400px;
   }
-  /*--- end video ---*/
 
   /*--- radio-button-video ---*/
   .radio-button-video{
@@ -121,7 +125,6 @@ a {
   }
 
   .top-video-row{ margin-top: 20px;}
-  /*--- end radio-button-video ---*/
 
   /*--- modal ---*/
 
@@ -203,164 +206,166 @@ a {
     }
   }
 
-
-    /*--- end modal ---*/
+  /*--- end modal ---*/
 
 /*--- end session.ejs ---*/
 
 
 
-/*--- profiles.ejs ---*/
+/*---------------------------
+          profiles.ejs
+ --------------------------*/
 
-/*--- bottone new session ---*/
-#prof{
-  left: 50%;
-  text-align: center;
-}
-/*--- end bottone new session ---*/
+  /*--- new profile button ---*/
+  #prof{
+    left: 50%;
+    text-align: center;
+  }
 
-/*--- users ---*/
-#users{ margin-top: 50px;}
-/*--- end users ---*/
+  /*--- users ---*/
+  #users{ margin-top: 20px;}
 
-/*--- popup profile ---*/
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+  /*--- btn visualizza ---*/
+  #enter {margin-bottom: 5px;}
 
-* {
-  font-family: 'Roboto', sans-serif;
-}
+  /*--- popup profile ---*/
+  @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-#registerModal .modal-dialog {
-  width: 350px;
-}
+  * {
+    font-family: 'Roboto', sans-serif;
+  }
 
-#registerModal input[type=text], input[type=password] {
-  margin-top: 10px;
-}
+  #registerModal .modal-dialog {
+    width: 350px;
+  }
 
-#div-login-msg,
-#div-lost-msg,
-#div-register-msg {
-  border: 1px solid #dadfe1;
-  height: 30px;
-  line-height: 28px;
-  transition: all ease-in-out 500ms;
-}
+  #registerModal input[type=text], input[type=password] {
+    margin-top: 10px;
+  }
 
-#div-login-msg.success,
-#div-lost-msg.success,
-#div-register-msg.success {
-  border: 1px solid #68c3a3;
-  background-color: #c8f7c5;
-}
+  #div-login-msg,
+  #div-lost-msg,
+  #div-register-msg {
+    border: 1px solid #dadfe1;
+    height: 30px;
+    line-height: 28px;
+    transition: all ease-in-out 500ms;
+  }
 
-#div-login-msg.error,
-#div-lost-msg.error,
-#div-register-msg.error {
-  border: 1px solid #eb575b;
-  background-color: #ffcad1;
-}
+  #div-login-msg.success,
+  #div-lost-msg.success,
+  #div-register-msg.success {
+    border: 1px solid #68c3a3;
+    background-color: #c8f7c5;
+  }
 
-#icon-login-msg,
-#icon-lost-msg,
-#icon-register-msg {
-  width: 30px;
-  float: left;
-  line-height: 28px;
-  text-align: center;
-  background-color: #dadfe1;
-  margin-right: 5px;
-  transition: all ease-in-out 500ms;
-}
+  #div-login-msg.error,
+  #div-lost-msg.error,
+  #div-register-msg.error {
+    border: 1px solid #eb575b;
+    background-color: #ffcad1;
+  }
 
-#icon-login-msg.success,
-#icon-lost-msg.success,
-#icon-register-msg.success {
-  background-color: #68c3a3 !important;
-}
+  #icon-login-msg,
+  #icon-lost-msg,
+  #icon-register-msg {
+    width: 30px;
+    float: left;
+    line-height: 28px;
+    text-align: center;
+    background-color: #dadfe1;
+    margin-right: 5px;
+    transition: all ease-in-out 500ms;
+  }
 
-#icon-login-msg.error,
-#icon-lost-msg.error,
-#icon-register-msg.error {
-  background-color: #eb575b !important;
-}
+  #icon-login-msg.success,
+  #icon-lost-msg.success,
+  #icon-register-msg.success {
+    background-color: #68c3a3 !important;
+  }
 
-#img_logo {
-  max-height: 100px;
-  max-width: 100px;
-}
+  #icon-login-msg.error,
+  #icon-lost-msg.error,
+  #icon-register-msg.error {
+    background-color: #eb575b !important;
+  }
 
-/* #########################################
-   #    override the bootstrap configs     #
-   ######################################### */
+  #img_logo {
+    max-height: 100px;
+    max-width: 100px;
+  }
 
-.modal-backdrop.in {
-  filter: alpha(opacity=50);
-  opacity: .8;
-}
+  /* #########################################
+     #    override the bootstrap configs     #
+     ######################################### */
 
-.modal-content {
-  background-color: #ececec;
-  border: 1px solid #bdc3c7;
-  border-radius: 0px;
-  outline: 0;
-}
+  .modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .8;
+  }
 
-.modal-header {
-  min-height: 16.43px;
-  padding: 15px 15px 15px 15px;
-  border-bottom: 0px;
-}
+  .modal-content {
+    background-color: #ececec;
+    border: 1px solid #bdc3c7;
+    border-radius: 0px;
+    outline: 0;
+  }
 
-.modal-body {
-  position: relative;
-  padding: 5px 15px 5px 15px;
-}
+  .modal-header {
+    min-height: 16.43px;
+    padding: 15px 15px 15px 15px;
+    border-bottom: 0px;
+  }
 
-.modal-footer {
-  padding: 15px 15px 15px 15px;
-  text-align: left;
-  border-top: 0px;
-}
+  .modal-body {
+    position: relative;
+    padding: 5px 15px 5px 15px;
+  }
 
-.checkbox {
-  margin-bottom: 0px;
-}
+  .modal-footer {
+    padding: 15px 15px 15px 15px;
+    text-align: left;
+    border-top: 0px;
+  }
 
-.btn {
-  border-radius: 0px;
-}
+  .checkbox {
+    margin-bottom: 0px;
+  }
 
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  outline: none;
-}
+  .btn {
+    border-radius: 0px;
+  }
 
-.btn-lg, .btn-group-lg>.btn {
-  border-radius: 0px;
-}
+  .btn:focus,
+  .btn:active:focus,
+  .btn.active:focus,
+  .btn.focus,
+  .btn:active.focus,
+  .btn.active.focus {
+    outline: none;
+  }
 
-.btn-link {
-  padding: 5px 10px 0px 0px;
-  color: #95a5a6;
-}
+  .btn-lg, .btn-group-lg>.btn {
+    border-radius: 0px;
+  }
 
-.btn-link:hover, .btn-link:focus {
-  color: #2c3e50;
-  text-decoration: none;
-}
+  .btn-link {
+    padding: 5px 10px 0px 0px;
+    color: #95a5a6;
+  }
 
-.glyphicon {
-  top: 0px;
-}
+  .btn-link:hover, .btn-link:focus {
+    color: #2c3e50;
+    text-decoration: none;
+  }
 
-.form-control {
-  border-radius: 0px;
-}
-/*--- popup profile ---*/
+  .glyphicon {
+    top: 0px;
+  }
+
+  .form-control {
+    border-radius: 0px;
+  }
+  /*--- popup profile ---*/
 
 /*--- end profile.ejs ---*/
