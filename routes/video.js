@@ -8,9 +8,7 @@ var ffmpeg = require('fluent-ffmpeg');
 var Grid = require('gridfs-stream');
 Grid.mongo = mongoose.mongo;
 var gfs;
-mongoose.connect("mongodb://127.0.0.1:27017/test", {
-    useMongoClient:true
-});
+
 
 /* GET home page. */
 /*router.get('/', function(req, res, next) {

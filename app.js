@@ -18,7 +18,11 @@ var storage = multer.diskStorage({
         var filename = file.originalname.split(".")[0];
         cb(null, filename + '-' + Date.now()+ '.' +extension)
     }
-})
+});
+var mongoose = require('mongoose');
+mongoose.connect("mongodb://root:AUI-project2017@ds135196.mlab.com:35196/auitest", {
+    useMongoClient:true
+});
 
 var session1 = require('./routes/session1');
 var tone_analyzer = require('./routes/tone-analyzer');
