@@ -263,20 +263,22 @@
                         score[2],
                         score[3],
                         score[4]],
-
-                    backgroundColor: [
-                        'rgba(39, 57, 194, 1)'
-                    ]
+                    
+                    borderColor: ['rgba(39, 57, 194, 1)']
                 },
 
-                {fill: 'origin'},   // 0: fill to 'origin'
-                {fill: '-1'},       // 1: fill to dataset 0
+                {fill: 'false'}  // 0: fill to 'origin'
             ]
         },
         options: {
+            elements: {
+                line:{
+                    tension:0.000001
+                }
+            },
             plugins: {
                 filler: {
-                    propagate: true
+                    propagate: false
                 }
             }
         }
