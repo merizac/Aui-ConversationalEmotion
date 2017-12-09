@@ -105,7 +105,12 @@ a {
   /*--- end carousel ---*/
 
   .well {
-    //background: #33CCFF !important;
+    background: #0066FF !important;
+    color: white;
+    font-size: 18px;
+    font-style: italic;
+
+    border-radius: 20px !important;
   }
 
 
