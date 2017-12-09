@@ -44,7 +44,7 @@
                 <div class="caption">
                     <h3 id="<%= elem._id%>"><%= elem.name %></h3>
                             <div class="btn-toolbar">
-                                <a href="#" id="enter" child="<%= elem._id%>" class="btn btn-primary" role="button" id="prof"> VISUALIZZA </a>
+                                <a id="enter" child="<%= elem._id%>" class="btn btn-primary" role="button" id="prof"> VISUALIZZA </a>
                                 <a href="#" id="delete" child="<%= elem._id%>" class="btn btn-default btn-danger" role="button">ELIMINA</a>
                             </div>
 
@@ -99,43 +99,6 @@
         </div>
 
         <script>
-
-            $("document").ready(
-                function(){
-
-                var btn = document.getElementById("submit");
-                var name = document.getElementById("name");
-                var surname = document.getElementById("surname");
-                var age = document.getElementById("age");
-                var description = document.getElementById("disabilityDescription");
-                var notes = document.getElementById("notes");
-                var elements = document.querySelectorAll('a[id="delete"]');
-
-                console.log(elements);
-                btn.onclick = function () {
-
-                    // When the user clicks on the button, open the modal
-                    $.post("http://localhost:3000/profiles/insert", {
-                            name: name.value,
-                            surname: surname.value,
-                            age: age.value,
-                            disabilityDescription: description.value,
-                            notes: notes.value
-                        });
-                }
-
-                elements.forEach(function(elem){
-                    elem.onclick = function(elem){
-                       var id = elem.target.getAttribute("child");
-                        $.post("http://localhost:3000/profiles/delete", {
-                            id: id
-                        });
-                    };
-                });
-
-            })
-
-    <script>
 
         $("document").ready(
             function(){
