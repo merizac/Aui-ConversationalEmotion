@@ -372,3 +372,9 @@ a {
   /*--- popup profile ---*/
 
 /*--- end profile.ejs ---*/
+
+/*--- start user.ejs ---*/
+#chart {
+  align: "right";
+  margin-left: 3gd;
+}
