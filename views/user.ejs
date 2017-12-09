@@ -22,6 +22,9 @@
     <!-- Custom CSS -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
     <!-- Include Modernizr in the head, before any other Javascript -->
     <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
     <!-- <script src="includes/js/modernizr-2.6.2.min.js"></script> -->
@@ -231,5 +234,53 @@
     </div><!--/col-9-->
 </div><!--/row-->
 </hr>
+
+<!--GRAFICO MIGLIORAMENTI-->
+
+<div class="col-sm-9" id="chart">
+    <canvas id="myChart2" ></canvas>
+</div>
+
+<script>
+    var ctx = document.getElementById("myChart2");
+    var score= [5, 1, 4, 3, 0];
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+
+            labels: [score[0],
+                score[1],
+                score[2],
+                score[3],
+                score[4]],
+
+            datasets: [
+                {
+                    data: [score[0],
+                        score[1],
+                        score[2],
+                        score[3],
+                        score[4]],
+
+                    backgroundColor: [
+                        'rgba(39, 57, 194, 1)'
+                    ]
+                },
+
+                {fill: 'origin'},   // 0: fill to 'origin'
+                {fill: '-1'},       // 1: fill to dataset 0
+            ]
+        },
+        options: {
+            plugins: {
+                filler: {
+                    propagate: true
+                }
+            }
+        }
+    })
+</script>
+
+
 
 </body>
