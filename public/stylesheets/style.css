@@ -373,8 +373,27 @@ a {
 
 /*--- end profile.ejs ---*/
 
-/*--- start user.ejs ---*/
-#chart {
-  align: "right";
-  margin-left: 3gd;
-}
+
+
+
+/*---------------------------
+          user.ejs
+ --------------------------*/
+
+  .table {
+    background-color: white !important;
+  }
+
+  .table th {
+    text-align: center;
+  }
+
+  .table td {
+    text-align: center;
+  }
+
+
+  .list-group-item
+  {
+    overflow:hidden;
+  }
