@@ -51,7 +51,7 @@ router.post('/insert', function(req, res, next){
         "name": req.body.name,
         "surname": req.body.surname,
         "age": req.body.age,
-        "disabilityDescription": req.body.description,
+        "disabilityDescription": req.body.disabilityDescription,
         "notes": req.body.notes
     };
     userData.collection.insert(newUser, onInsert);
