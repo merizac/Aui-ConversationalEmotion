@@ -107,7 +107,7 @@
             var name = document.getElementById("name");
             var surname = document.getElementById("surname");
             var age = document.getElementById("age");
-            var description = document.getElementById("disabilityDescription");
+            var disabilityDescription = document.getElementById("disabilityDescription");
             var notes = document.getElementById("notes");
             var elements = document.querySelectorAll('a[id="delete"]');
             var enters = document.querySelectorAll('a[id="enter"]');
@@ -119,7 +119,7 @@
                         name: name.value,
                         surname: surname.value,
                         age: age.value,
-                        disabilityDescription: description.value,
+                        disabilityDescription: disabilityDescription.value,
                         notes: notes.value
                     });
                 location.href="/profiles"

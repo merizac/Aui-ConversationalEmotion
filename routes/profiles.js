@@ -9,24 +9,27 @@ var userData = require('../models/user_model');
         "name" : "Maria Chiara",
         "surname" : "Zaccardi",
         "age" : "23",
+        "disabilityDescription": "porca troia",
         "notes" : "ciao"},
 
     {
         "name" : "Nicola",
         "surname" : "Sosio",
         "age" : "23",
+        "disabilityDescription": "porca troia",
         "notes" : "ciao"},
 
     {
         "name" : "Matteo",
         "surname" : "Penco",
         "age" : "22",
+        "disabilityDescription": "porca troia",
         "notes" : "ciao"}
   ];
 
 
-userData.collection.insert(users, onInsert);
-*/
+userData.collection.insert(users, onInsert);*/
+
 
 function onInsert(err, docs) {
     if (err) {
