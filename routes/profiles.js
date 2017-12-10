@@ -117,8 +117,7 @@ conn.once("open", function() {
                     "notes": req.body.notes,
                     "image" : file._id
                 };
-
-                console.log(newUser);
+                
                 userData.collection.insert(newUser, onInsert);
                 fs.unlink(path.join(__dirname, "../", part.path), function(err) {
                     if (err) throw err;
