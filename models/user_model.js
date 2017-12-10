@@ -8,7 +8,7 @@ var user = new Schema({
     age: {type: Number, min:0, max:99, required: true},
     disabilityDescription: String,
     notes: String,
-    //picture?
+    image : {type: String, required: true}
 });
 
 var userData = mongoose.model('UserData', user);
