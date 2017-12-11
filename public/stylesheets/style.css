@@ -7,39 +7,43 @@ a {
   color: white;
 }
 
+/* --- navbar --- */
+.navbar {
+  background-color: #0066FF;
+}
+
+.navbar .navbar-brand {
+  color: white;
+}
+
+#logout {
+  color: white;
+}
+
+.navbar-toggle .icon-bar{
+  background-color: white;
+}
+
+#collapseBtn {
+  border-color: white;
+}
+
+#logout {
+  padding-top: 7px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+/*--- end navbar ---*/
+
 /*---------------------------
           session1.ejs
  --------------------------*/
-
-  /* --- navbar --- */
-  .navbar {
-    background-color: #0066FF;
-  }
-
-  .navbar .navbar-brand {
-    color: white;
-  }
-
-  #logout {
-    color: white;
-  }
-
-  .navbar-toggle .icon-bar{
-    background-color: white;
-  }
-
-  #collapseBtn {
-    border-color: white;
-  }
-
-  @media (min-width: 768px) {
-    .navbar-nav.navbar-center {
-      position: absolute;
-      left: 50%;
-      transform: translatex(-50%);
-    }
-  }
-
 
   /*--- textArea ---*/
   .animated {
