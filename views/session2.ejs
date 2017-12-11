@@ -117,6 +117,9 @@
 
         var btn = document.getElementById("submit");
         var modalsBtn = document.querySelectorAll('[modalbutton="true"]');
+       /* var pattern = '"',
+            re = new RegExp(pattern, "g");
+        var user = localStorage.getItem("user").replace(re, '');*/
         modalsBtn.forEach(function(elem){
            elem.onclick = function(event){
                var video = document.getElementById("videotoshow");
@@ -135,6 +138,7 @@
                 var res = id.split("-");
                 if(res[1]=="true"){
                     alert("Correct answer");
+                    //localStorage.removeItem("user");
                 }
                 else{
                     alert("Wrong answer");

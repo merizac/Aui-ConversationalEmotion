@@ -21,6 +21,15 @@
 </head>
 <body>
 
+    <% if (locals.user) { %>
+
+    <!-- use script tag to access ejs data and local storage -->
+    <script>
+        let user =<%- JSON.stringify(user) %>;
+        localStorage.setItem('user', JSON.stringify(user));
+    </script>
+    <% } %>
+
 
 <div class="container">
 
