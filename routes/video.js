@@ -26,15 +26,14 @@ conn.once("open", function(){
     //get the video given the filename
     router.get('/', function(req, res){
 
-        console.log("entered");
+
         gfs.files.findOne({
             filename: req.query.filename
         }, function(err, file){
             if(err){
                 return res.status(400).send({message: "File not found"});
             }
-
-
+            
             var data = [];
             var readstream = gfs.createReadStream({
                 filename: file.filename

@@ -243,7 +243,7 @@ function RecognizerStart(SDK, recognizer) {
           RecognizerStop(SDK, recognizer);
         }
         console.log("key: "+ key);
-        recognizer = RecognizerSetup(SDK, "Interactive", "it-IT", SDK.SpeechResultFormat["Simple"], key);
+        recognizer = RecognizerSetup(SDK, "Interactive", "en-GB", SDK.SpeechResultFormat["Simple"], key);
       }
 
       /*function UpdateStatus(status) {

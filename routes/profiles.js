@@ -50,6 +50,7 @@ conn.once("open", function() {
     gfs = Grid(conn.db);
 
     router.get('/', function (req, res, next) {
+        console.log(req);
         // res.send(users);
         userData.find()
             .then(function (users) {
@@ -60,7 +61,8 @@ conn.once("open", function() {
     router.get('/image', function(req, res){
 
         var imageId = req.query.id;
-        var id = new ObjectId(imageId);
+        var ObjectID = require('mongodb').ObjectID;
+        var id = new ObjectID(imageId);
 
         gfs.files.find({
             _id: id
@@ -117,7 +119,7 @@ conn.once("open", function() {
                     "notes": req.body.notes,
                     "image" : file._id
                 };
-                
+
                 userData.collection.insert(newUser, onInsert);
                 fs.unlink(path.join(__dirname, "../", part.path), function(err) {
                     if (err) throw err;
