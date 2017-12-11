@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
         for (i=0; i< parse_param.length; i++){
             parse_param[i].filename = result[i];
         }
-        res.render('session', {data : parse_param});
+        res.render('session2', {data : parse_param});
     });
 
 
