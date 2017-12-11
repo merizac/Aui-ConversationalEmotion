@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
     var emotion = req.query.emotion;
     var num_video = req.query.num_video;
-    var emotions = ["joy", "sadness", "fear", "disgust", "anger"];
+    var emotions = ["Joy", "Sadness", "Fear", "Disgust", "Anger"];
     emotions = _.last(_.shuffle(_.without(emotions, emotion)), num_video-1);
 
     var param = '{"emotions" : []}';
