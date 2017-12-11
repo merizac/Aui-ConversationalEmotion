@@ -22,6 +22,16 @@ a {
   color: white;
 }
 
+#logout:hover{
+  background-color: blue;
+  color: white;
+}
+
+#logout:focus{
+  background-color: blue;
+  color: white;
+}
+
 #logout {
   color: white;
 }
