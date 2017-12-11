@@ -10,6 +10,12 @@ a {
 /* --- navbar --- */
 .navbar {
   background-color: #0066FF;
+  height: 52px !important;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+  background-color: blue;
+  color: white;
 }
 
 .navbar .navbar-brand {
@@ -26,10 +32,6 @@ a {
 
 #collapseBtn {
   border-color: white;
-}
-
-#logout {
-  padding-top: 7px;
 }
 
 @media (min-width: 768px) {
