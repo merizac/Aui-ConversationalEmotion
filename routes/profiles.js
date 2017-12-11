@@ -50,8 +50,7 @@ conn.once("open", function() {
     gfs = Grid(conn.db);
 
     router.get('/', function (req, res, next) {
-        console.log(req);
-        // res.send(users);
+
         userData.find()
             .then(function (users) {
                 res.render('profiles', {users: users});
@@ -117,8 +116,11 @@ conn.once("open", function() {
                     "age": req.body.age,
                     "disabilityDescription": req.body.disabilityDescription,
                     "notes": req.body.notes,
-                    "image" : file._id
+                    "image" : file._id,
+                    "imageDefault" : false
                 };
+
+                console.log(newUser);
 
                 userData.collection.insert(newUser, onInsert);
                 fs.unlink(path.join(__dirname, "../", part.path), function(err) {
@@ -137,9 +139,11 @@ conn.once("open", function() {
                 "surname": req.body.surname,
                 "age": req.body.age,
                 "disabilityDescription": req.body.disabilityDescription,
-                "notes": req.body.notes
+                "notes": req.body.notes,
+                "imageDefault" : true
             };
             userData.collection.insert(newUser, onInsert);
+            res.send("success");
 
         }
 
@@ -153,7 +157,10 @@ conn.once("open", function() {
         var id = req.body.id;
         userData.findById(id)
             .then(function(user){
-                gfs.remove({ _id: user.image });
+                if(!user.imageDefault){
+                    gfs.remove({ _id: ""+user.image });
+                }
+
             });
         userData.findByIdAndRemove(id).exec();
         //res.redirect('/profiles');
