@@ -181,11 +181,11 @@ function RecognizerStart(SDK, recognizer) {
                   type: 'doughnut',
                   data: {
 
-                      labels: [tones[0].tone_name,
-                          tones[1].tone_name,
-                          tones[2].tone_name,
-                          tones[3].tone_name,
-                          tones[4].tone_name],
+                      labels: [tones[0].tone_id,
+                          tones[1].tone_id,
+                          tones[2].tone_id,
+                          tones[3].tone_id,
+                          tones[4].tone_id],
 
                       datasets: [{
                           data: [tones[0].score,

@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 
     var emotion = req.query.emotion;
     var num_video = req.query.num_video;
-    var emotions = ["Joy", "Sadness", "Fear", "Disgust", "Anger"];
+    var emotions = ["joy", "sadness", "fear", "disgust", "anger"];
     emotions = _.last(_.shuffle(_.without(emotions, emotion)), num_video-1);
 
     var param = '{"emotions" : []}';
@@ -45,7 +45,7 @@ router.get('/', function(req, res, next) {
         for (i=0; i< parse_param.length; i++){
             parse_param[i].filename = result[i];
         }
-        res.render('session', {data : parse_param});
+        res.render('session2', {data : parse_param});
     });
 
 
