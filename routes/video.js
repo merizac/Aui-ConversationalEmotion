@@ -70,7 +70,7 @@ conn.once("open", function(){
 
     });
 
-    //get the filename of the video and of the thumbnail given an emotion
+    //get the filename of all videos and of all thumbnails given an emotion
     router.get('/thumbnail/:emotion', function(req, res) {
         var filename=[];
         db.collection("fs.files")
@@ -84,6 +84,27 @@ conn.once("open", function(){
 
                 var index = Math.floor(Math.random() * filename.length);
                 res.send(filename[index]);
+            });
+
+    });
+
+    //get the filename of one video and of one thumbnail given an emotion
+    router.get('/allthumbnail/:emotion', function(req, res) {
+        var filename={ 'emotion' : req.params.emotion, 'files' : []};
+        db.collection("fs.files")
+            .find({ "metadata.emotion" : req.params.emotion, "metadata.format" : "thumbnail"})
+            .toArray(function(err, files){
+                if(err) throw error;
+
+                files.forEach(function (file) {
+                    filename.files.push({
+                        filename: {
+                            thumbnail : file.filename,
+                            video : file.metadata.video
+                        }});
+                });
+                res.setHeader('Content-type', 'application/json');
+                res.send(filename);
             });
 
     });
@@ -183,13 +204,19 @@ conn.once("open", function(){
                 });
 
 
-                return res.send({
+                res.send({
                     result : "Success"
                 })
 
 
         });
 
+
+    });
+
+    router.post('/delete', function(req, res){
+        gfs.remove({ filename : req.body.thumbnail });
+        gfs.remove({filename : req.body.video});
 
     });
 });

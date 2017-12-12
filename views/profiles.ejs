@@ -156,8 +156,10 @@
                    var id = elem.target.getAttribute("child");
                     $.post("http://localhost:3000/profiles/delete", {
                         id: id
+                    }, function(){
+                        location.href="/profiles";
                     });
-                    location.href="/profiles"
+
                 };
             });
 

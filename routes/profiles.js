@@ -120,8 +120,6 @@ conn.once("open", function() {
                     "imageDefault" : false
                 };
 
-                console.log(newUser);
-
                 userData.collection.insert(newUser, onInsert);
                 fs.unlink(path.join(__dirname, "../", part.path), function(err) {
                     if (err) throw err;
@@ -153,7 +151,7 @@ conn.once("open", function() {
     });
 
     router.post('/delete', function (req, res, next) {
-        console.log(req.body.id);
+
         var id = req.body.id;
         userData.findById(id)
             .then(function(user){
@@ -163,7 +161,9 @@ conn.once("open", function() {
 
             });
         userData.findByIdAndRemove(id).exec();
-        //res.redirect('/profiles');
+        res.send({
+            message : "success"
+        });
     });
 
     router.get('/user', function (req, res, next) {
