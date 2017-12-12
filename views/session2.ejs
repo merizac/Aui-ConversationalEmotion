@@ -27,20 +27,21 @@
     <div>
         <%include partials/header.ejs%>
     </div>
+
     <div class="row top-video-row">
-    <% data.forEach(function(elem, index){ %>
-        <div class="col-sm-5" id="MyImage">
-            <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
-            <a  class="preview" type="button" video = "<%= elem.filename.video%>" modalbutton = "true" id="myButton">
-                <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
-            </a>
-        </div>
-        <div class="col-sm-1">
-            <div class="form-group radio-button-video">
-                <input name="opt-video" type="radio" id="radio-<%= elem.right %>-<%= index %>">
+        <% data.forEach(function(elem, index){ %>
+            <div class="col-sm-5" id="MyImage">
+                <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
+                <a  class="preview" type="button" video = "<%= elem.filename.video%>" modalbutton = "true" id="myButton">
+                    <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
+                </a>
             </div>
-        </div>
-    <% }); %>
+            <div class="col-sm-1">
+                <div class="form-group radio-button-video">
+                    <input name="opt-video" type="radio" id="radio-<%= elem.right %>-<%= index %>">
+                </div>
+            </div>
+        <% }); %>
     </div>
 
     <div class="row top-video-row">
