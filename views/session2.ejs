@@ -3,7 +3,7 @@
 <head>
 
     <!-- Website Title & Description for Search Engine purposes -->
-    <title></title>
+    <title>Session</title>
     <meta name="description" content="">
 
     <!-- Mobile viewport optimized -->
@@ -38,7 +38,7 @@
             </div>
             <div class="col-xs-1">
                 <div class="form-group radio-button-video">
-                    <input name="opt-video" type="radio" id="radio-<%= elem.right %>-<%= index %>">
+                    <input name="opt-video" emotion = "<%= elem.emotion %>" type="radio" id="radio-<%= elem.right %>-<%= index %>">
                 </div>
             </div>
         <% }); %>
@@ -109,6 +109,7 @@
 
         var btn = document.getElementById("submit");
         var modalsBtn = document.querySelectorAll('[modalbutton="true"]');
+        var attempts = 0;
        /* var pattern = '"',
             re = new RegExp(pattern, "g");
         var user = localStorage.getItem("user").replace(re, '');*/
@@ -120,7 +121,7 @@
                $('#modal-video').modal('show')
            };
         });
-        btn.addEventListener("click", function(){
+        btn.addEventListener("click", function(event){
             var elements = document.querySelectorAll('input[id^="radio-"]:checked');
             if(elements.length==0){
                 swal("Attenzione!", "Devi selezionare un video per rispondere!", "warning");
@@ -129,10 +130,33 @@
                 var id= elements[0].id;
                 var res = id.split("-");
                 if(res[1]=="true"){
-                    swal("Complimenti!", "Risposta corretta!", "success");
+                    attempts++;
+                    var date = new Date();
+                    var dateJSON = {
+                        'minute' : date.getMinutes(),
+                        'hour' : date.getHours(),
+                        'day' : date.getDate(),
+                        'month': date.getMonth(),
+                        'year' : date.getFullYear()
+                    };
+                    var emotion = $('input[id^="radio-true-"]')[0].getAttribute("emotion");
+                    var choices = modalsBtn.length;
+
+                    var param = {
+                        'date' : dateJSON,
+                        'points' : choices/attempts,
+                        'emotion' : emotion,
+                        'choices' : choices,
+                    };
+                    
+                    swal("Complimenti!", "Risposta corretta!", "success")
+                        .then(function(){
+                            location.href="/profiles"
+                        });
                     //localStorage.removeItem("user");
                 }
                 else{
+                    attempts++;
                     swal("Risposta sbagliata!", "Prova di nuovo!", "error");
                 }
             }
