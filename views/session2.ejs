@@ -73,41 +73,14 @@
 </div>
 
 
-<!-- ALERTS
-<div class="alert alert-warning alert-dismissable" style="display:none" id="noVideoSelected">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Attenzione!</strong> Non hai selezionato alcun video!
-</div>
-
-<div class="alert alert-success alert-dismissable" style="display:none" id="correctAnswer">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Complimenti!</strong> Risposta corretta!
-</div>
-
-<div class="alert alert-danger alert-dismissable" style="display:none" id="wrongAnswer">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Risposta sbagliata!</strong> Prova di nuovo!
-</div> -->
-
-<!-- video to show -->
-<!--<div class="col-sm-5">
-    <div class="embed-responsive embed-responsive-16by9">
-        <video controls id="video+idex" class="embed-responsive-item video">
-            <source src="/video?filename=filename" type="video/mp4">
-        </video>
-    </div>
-</div>-->
-
-
 <%include partials/footer.ejs%>
 
 
+<!-- SweetAlert -->
+<script src="scripts/sweetalert.min.js"></script>
 
 <!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
-
-<!-- SweetAlert -->
-<script src="scripts/sweetalert.min.js"></script>
 
 <!-- First try for the online version of jQuery-->
 <script src="http://code.jquery.com/jquery.js"></script>
@@ -150,17 +123,17 @@
         btn.addEventListener("click", function(){
             var elements = document.querySelectorAll('input[id^="radio-"]:checked');
             if(elements.length==0){
-                swal("Oops!", "Something went wrong!");
+                swal("Attenzione!", "Devi selezionare un video per rispondere!", "warning");
             }
             else{
                 var id= elements[0].id;
                 var res = id.split("-");
                 if(res[1]=="true"){
-                    alert("Complimenti, risposta corretta!");
+                    swal("Complimenti!", "Risposta corretta!", "success");
                     //localStorage.removeItem("user");
                 }
                 else{
-                    alert("Risposta sbagliata, riprova!");
+                    swal("Risposta sbagliata!", "Prova di nuovo!", "error");
                 }
             }
 
