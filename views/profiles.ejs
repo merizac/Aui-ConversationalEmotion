@@ -118,45 +118,32 @@
             var elements = document.querySelectorAll('a[id="delete"]');
             var enters = document.querySelectorAll('a[id="enter"]');
 
-            /*btn.onclick = function () {
+            $('.uploadProfile').submit(function(e){
+                e.preventDefault();
 
-                // When the user clicks on the button, open the modal
-                $.post("http://localhost:3000/profiles/insert", {
+                $(this).ajaxSubmit({
+                    data: {
                         name: name.value,
                         surname: surname.value,
                         age: age.value,
                         disabilityDescription: disabilityDescription.value,
                         notes: notes.value
-                    });
-                location.href="/profiles"
-            }*/
-
-                $('.uploadProfile').submit(function(e){
-                    e.preventDefault();
-
-                    $(this).ajaxSubmit({
-                        data: {
-                            name: name.value,
-                            surname: surname.value,
-                            age: age.value,
-                            disabilityDescription: disabilityDescription.value,
-                            notes: notes.value
-                        },
-                        contentType: 'application/json',
-                        success: function(response){
-                            console.log('image uploaded and form submitted');
-                            location.href="/profiles"
-                        }
-                    });
-                    return false;
+                    },
+                    contentType: 'application/json',
+                    success: function(response){
+                        console.log('image uploaded and form submitted');
+                        location.href="/profiles"
+                    }
                 });
+                return false;
+            });
 
             elements.forEach(function(elem){
                 elem.onclick = function(elem){
                    var id = elem.target.getAttribute("child");
                     $.post("http://localhost:3000/profiles/delete", {
                         id: id
-                    }, function(){
+                    }).then(function(){
                         location.href="/profiles";
                     });
 
