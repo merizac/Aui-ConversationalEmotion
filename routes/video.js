@@ -111,7 +111,6 @@ conn.once("open", function(){
 
     // get the thumbnail given the filename
     router.get('/thumbnail', function(req, res){
-        console.log("entered get filename");
         var filename = req.query.filename;
 
         gfs.files.find({
@@ -217,6 +216,10 @@ conn.once("open", function(){
     router.post('/delete', function(req, res){
         gfs.remove({ filename : req.body.thumbnail });
         gfs.remove({filename : req.body.video});
+
+        res.send({
+           result : "Success"
+        });
 
     });
 });
