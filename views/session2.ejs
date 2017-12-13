@@ -30,13 +30,13 @@
 
     <div class="row top-video-row">
         <% data.forEach(function(elem, index){ %>
-            <div class="col-sm-5" id="MyImage">
+            <div class="col-xs-5" id="MyImage">
                 <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
                 <a  class="preview" type="button" video = "<%= elem.filename.video%>" modalbutton = "true" id="myButton">
                     <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
                 </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-xs-1">
                 <div class="form-group radio-button-video">
                     <input name="opt-video" type="radio" id="radio-<%= elem.right %>-<%= index %>">
                 </div>
@@ -73,6 +73,22 @@
 </div>
 
 
+<!-- ALERTS
+<div class="alert alert-warning alert-dismissable" style="display:none" id="noVideoSelected">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Attenzione!</strong> Non hai selezionato alcun video!
+</div>
+
+<div class="alert alert-success alert-dismissable" style="display:none" id="correctAnswer">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Complimenti!</strong> Risposta corretta!
+</div>
+
+<div class="alert alert-danger alert-dismissable" style="display:none" id="wrongAnswer">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Risposta sbagliata!</strong> Prova di nuovo!
+</div> -->
+
 <!-- video to show -->
 <!--<div class="col-sm-5">
     <div class="embed-responsive embed-responsive-16by9">
@@ -90,6 +106,8 @@
 <!-- The SDK has a dependency on requirejs (http://requirejs.org/). -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js"></script>
 
+<!-- SweetAlert -->
+<script src="scripts/sweetalert.min.js"></script>
 
 <!-- First try for the online version of jQuery-->
 <script src="http://code.jquery.com/jquery.js"></script>
@@ -132,17 +150,17 @@
         btn.addEventListener("click", function(){
             var elements = document.querySelectorAll('input[id^="radio-"]:checked');
             if(elements.length==0){
-                alert("select a video!");
+                swal("Oops!", "Something went wrong!");
             }
             else{
                 var id= elements[0].id;
                 var res = id.split("-");
                 if(res[1]=="true"){
-                    alert("Correct answer");
+                    alert("Complimenti, risposta corretta!");
                     //localStorage.removeItem("user");
                 }
                 else{
-                    alert("Wrong answer");
+                    alert("Risposta sbagliata, riprova!");
                 }
             }
 
