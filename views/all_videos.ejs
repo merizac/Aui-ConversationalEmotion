@@ -29,28 +29,33 @@
 
 </head>
 <body>
+
 <div class="container">
 
     <div>
         <%include partials/header.ejs%>
     </div>
-    <% video.forEach(function(elem){%>
-    <div class="row">
-        <div class="row">
-            <h2> <%= elem.emotion%></h2>
-            <button type="button" id="addVideo-<%= elem.emotion%>" href="#"
-                    class="btn btn-success btn-lg" role="button" >Nuovo video</button>
+
+    <% video.forEach(function(elem, index) {%>
+        <div class="container">
+            <div class="row top-video-row" id="newVideoRow">
+                <h2><strong><%= emotions[index]%></strong></h2>
+                <button type="button" id="addVideo-<%= elem.emotion%>" href="#"
+                        class="btn btn-success btn-lg" role="button" >Nuovo video</button>
+            </div>
+
+            <div class="row" id="scrollRow">
+                <% elem.files.forEach(function(el){%>
+                    <div class="col-xs-4" id="MyImage2">
+                        <img id="theImage" src="/video/thumbnail?filename=<%= el.filename.thumbnail%>" class="img-responsive">
+                        <a class="preview" id="myButton2" type="button" video = "<%= el.filename.video%>" modalbutton = "true" >
+                            <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
+                        </a>
+                        <a href="#" id="delete" class="btn btn-default btn-danger" role="button">ELIMINA</a>
+                    </div>
+                <%});%>
+            </div>
         </div>
-        <% elem.files.forEach(function(el){%>
-        <div class="col-sm-4">
-            <img src="/video/thumbnail?filename=<%= el.filename.thumbnail%>" class="img-responsive">
-            <a  class="preview" type="button" video = "<%= el.filename.video%>" modalbutton = "true" id="myButton">
-                <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
-            </a>
-            <a href="#" id="delete" class="btn btn-default btn-danger" role="button">ELIMINA</a>
-        </div>
-        <%});%>
-    </div>
     <% });%>
 
     <!-- BEGIN # MODAL ADD VIDEO -->
@@ -99,6 +104,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
     <%include partials/footer.ejs%>

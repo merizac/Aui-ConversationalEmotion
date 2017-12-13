@@ -427,3 +427,38 @@ a {
   {
     overflow:hidden;
   }
+
+
+
+/*---------------------------
+        all_videos.ejs
+--------------------------*/
+
+  #delete {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #scrollRow {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  #MyImage2 {
+    margin: 20px auto 0;
+    width: 100%;
+    max-width: 400px;
+    display: inline-block;
+    float: none;
+  }
+
+  #myButton2 {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    height: 50%;
+    width: 50%;
+    text-align: center;
+  }
+
+  #newVideoRow { margin-left: 2px;}

@@ -27,7 +27,8 @@ router.get('/', function(req, res, next) {
 
     async.map(urls, httpGet, function (err, result){
         if (err) return console.log(err);
-        res.render('all_videos', {video : result} );
+        var itaEmotions=['Gioia', 'Tristezza', 'Paura', 'Disgusto', 'Rabbia'];
+        res.render('all_videos', {video : result , emotions : itaEmotions} );
     });
 });
 

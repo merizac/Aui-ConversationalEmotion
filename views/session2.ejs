@@ -32,7 +32,7 @@
         <% data.forEach(function(elem, index){ %>
             <div class="col-xs-5" id="MyImage">
                 <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
-                <a  class="preview" type="button" video = "<%= elem.filename.video%>" modalbutton = "true" id="myButton">
+                <a class="preview" id="myButton" type="button" video = "<%= elem.filename.video%>" modalbutton = "true">
                     <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
                 </a>
             </div>
