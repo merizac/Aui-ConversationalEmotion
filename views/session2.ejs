@@ -115,7 +115,7 @@
         var user = localStorage.getItem("user").replace(re, '');*/
         modalsBtn.forEach(function(elem){
            elem.onclick = function(event){
-               e.preventDefault();
+               event.preventDefault();
                var video = document.getElementById("videotoshow");
                var src = "/video?filename=" + event.target.parentElement.getAttribute('video');
                video.src = src;
@@ -156,10 +156,7 @@
                         'choices' : choices,
                     };
                     
-                    swal("Complimenti!", "Risposta corretta!", "success")
-                        .then(function(){
-                            location.href="/profiles"
-                        });
+                    swal("Complimenti!", "Risposta corretta!", "success");
                     //localStorage.removeItem("user");
                 }
                 else{
