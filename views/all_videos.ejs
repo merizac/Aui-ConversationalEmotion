@@ -39,12 +39,10 @@
     <% video.forEach(function(elem, index) {%>
         <div class="container">
             <div class="row top-video-row" id="newVideoRow">
-                <h2><strong><%= emotions[index] %></strong></h2>
-                <button type="button" id="addVideo-<%= elem.emotion%>" href="#"
+                <h2 id="emotionString"><strong><%= emotions[index] %></strong></h2>
+                <button style="margin-left: 15px; margin-bottom: 15px;" type="button" id="addVideo-<%= elem.emotion%>" href="#"
                         class="btn btn-success btn-lg" role="button" >Nuovo video</button>
             </div>
-
-            <hr id="divider"/>
 
             <div class="row" id="scrollRow">
                 <% elem.files.forEach(function(el){%>
@@ -58,7 +56,6 @@
                 <%});%>
             </div>
 
-            <hr id="divider"/>
         </div>
     <% });%>
 
