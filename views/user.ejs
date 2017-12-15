@@ -78,37 +78,15 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>10.12.2017</td>
-                                    <td>4</td>
-                                    <td>Gioia</td>
-                                    <td>3</td>
-                                </tr>
 
+                            <% session.forEach(function(elem){%>
                                 <tr>
-                                    <td>15.12.2017</td>
-                                    <td>7</td>
-                                    <td>Rabbia</td>
-                                    <td>5</td>
+                                    <td><%= elem.date %></td>
+                                    <td><%= elem.score %></td>
+                                    <td><%= elem.dominantEmotion %></td>
+                                    <td><%= elem.choices %></td>
                                 </tr>
-                                <tr>
-                                    <td>15.12.2017</td>
-                                    <td>7</td>
-                                    <td>Rabbia</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>15.12.2017</td>
-                                    <td>7</td>
-                                    <td>Rabbia</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>15.12.2017</td>
-                                    <td>7</td>
-                                    <td>Rabbia</td>
-                                    <td>5</td>
-                                </tr>
+                            <%})%>
 
                             </tbody>
                         </table>
@@ -196,6 +174,6 @@
             })
         </script>
     </div>
-
+    </div>
 
 </body>
