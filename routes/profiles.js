@@ -140,6 +140,7 @@ conn.once("open", function() {
                 "notes": req.body.notes,
                 "imageDefault" : true
             };
+
             userData.collection.insert(newUser, onInsert);
             res.send("success");
 

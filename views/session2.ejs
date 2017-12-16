@@ -110,9 +110,9 @@
         var btn = document.getElementById("submit");
         var modalsBtn = document.querySelectorAll('[modalbutton="true"]');
         var attempts = 0;
-       /* var pattern = '"',
+        var pattern = '"',
             re = new RegExp(pattern, "g");
-        var user = localStorage.getItem("user").replace(re, '');*/
+        var user = localStorage.getItem("user").replace(re, '');
         modalsBtn.forEach(function(elem){
            elem.onclick = function(event){
                event.preventDefault();
@@ -136,28 +136,29 @@
             else{
                 var id= elements[0].id;
                 var res = id.split("-");
-                if(res[1]=="true"){
+                if(res[1]=="true") {
                     attempts++;
-                    var date = new Date();
-                    var dateJSON = {
-                        'minute' : date.getMinutes(),
-                        'hour' : date.getHours(),
-                        'day' : date.getDate(),
-                        'month': date.getMonth(),
-                        'year' : date.getFullYear()
-                    };
+
                     var emotion = $('input[id^="radio-true-"]')[0].getAttribute("emotion");
                     var choices = modalsBtn.length;
+                    var precision = Math.pow(10, 2)
+                    var points = Math.ceil((choices/attempts) * precision) / precision
 
-                    var param = {
-                        'date' : dateJSON,
-                        'points' : choices/attempts,
-                        'emotion' : emotion,
-                        'choices' : choices,
-                    };
-                    
-                    swal("Complimenti!", "Risposta corretta!", "success");
-                    //localStorage.removeItem("user");
+
+
+                    swal("Complimenti!", "Risposta corretta!", "success")
+                        .then(function () {
+
+                            $.post("/user/insert", {
+                                'user': user,
+                                'points': points,
+                                'emotion': emotion,
+                                'choices': choices
+                            });
+
+                            location.href = "/user?id=" + user;
+                            localStorage.removeItem("user");
+                        });
                 }
                 else{
                     attempts++;

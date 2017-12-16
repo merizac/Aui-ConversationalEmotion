@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var SessionSchema = new Schema({
     user: {type: String},
-    date: Date,
+    date: String,
     score: Number,
     dominantEmotion: String,
     choices: Number

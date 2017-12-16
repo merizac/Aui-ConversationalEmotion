@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var userData = require('../models/user_model');
 var sessionData = require('../models/session_model');
+var moment = require('moment');
+
 
 /*var sessions= [{
     user: "5a2ebb00ce76390302cd7e1d",
@@ -15,7 +17,8 @@ var sessionData = require('../models/session_model');
     user: "5a2ebb00ce76390302cd7e1d",
     date: Date.now,
     score: "5",
-    dominantEmotion: "Rabbia",
+    dominantEmotvar moment = require('moment');
+ion: "Rabbia",
     choices: "1"}
 ];
 
@@ -39,6 +42,19 @@ router.get('/', function(req, res, next){
     });
 
 });
+
+router.post('/insert', function (req, res, next) {
+ var newsession = {
+     "user": req.body.user,
+     "date": moment().format("DD/MM/YY HH:mm"),
+     "score": req.body.points,
+     "dominantEmotion": req.body.emotion,
+     "choices": req.body.choices
+    };
+sessionData.collection.insert(newsession, onInsert);
+
+});
+
 
 module.exports = router;
 

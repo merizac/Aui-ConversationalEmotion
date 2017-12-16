@@ -54,6 +54,7 @@
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <%= user.disabilityDescription %></li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Note aggiuntive</strong></span> <%= user.notes %></li>
             </ul>
+            <a id="newsession" class="btn btn-primary" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
         </div><!--/col-3-->
 
         <div class="col-sm-9">
@@ -108,7 +109,7 @@
                                 <tr>
                                     <td>10.05.2017</td>
                                     <td>MASSAGGIO schiena</td>
-                                    <td><button type="button" data-toggle="modal" data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                                    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -132,26 +133,24 @@
 
         <script>
             var ctx = document.getElementById("myChart2");
-            var score= [5, 1, 4, 3, 0];
+            var sessions= <%- JSON.stringify(session) %>;
+            var score = [];
+            var date = [];
+            sessions.forEach(function(session){
+                score.push(session.score);
+                date.push(session.date);
+            });
             new Chart(ctx, {
                 type: 'line',
                 data: {
 
-                    labels: [score[0],
-                        score[1],
-                        score[2],
-                        score[3],
-                        score[4]],
+                    labels: date,
 
                     datasets: [
                         {
                             label: "Punteggio",
 
-                            data: [score[0],
-                                score[1],
-                                score[2],
-                                score[3],
-                                score[4]],
+                            data: score,
 
                             borderColor: ['rgba(39, 57, 194, 1)']
                         },
@@ -172,6 +171,14 @@
                     }
                 }
             })
+
+            $("document").ready(
+                function(){
+                    var newsession = document.getElementById("newsession");
+                    newsession.onclick= function(elem) {
+                         location.href = "/session1?id=" + elem.target.getAttribute("child");
+            }
+                })
         </script>
     </div>
     </div>
