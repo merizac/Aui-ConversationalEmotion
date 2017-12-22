@@ -262,7 +262,7 @@ a {
   #enter {margin-bottom: 5px;}
 
 #profilo {
-  opacity: 0.75;
+  opacity: 0.85;
   filter: alpha(opacity=75); /* For IE8 and earlier */
 }
 
