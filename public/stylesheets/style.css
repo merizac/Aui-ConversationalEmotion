@@ -261,6 +261,16 @@ a {
   /*--- btn visualizza ---*/
   #enter {margin-bottom: 5px;}
 
+#profilo {
+  opacity: 0.75;
+  filter: alpha(opacity=75); /* For IE8 and earlier */
+}
+
+#profilo:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
   /*--- popup profile ---*/
   @import url(http://fonts.googleapis.com/css?family=Roboto);
 
