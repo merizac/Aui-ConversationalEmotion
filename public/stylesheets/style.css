@@ -86,6 +86,11 @@ a {
           home.ejs
  --------------------------*/
 
+#logo {
+    font-size: 28px;
+    font-family: 'Indie Flower', cursive;
+}
+
   /*--- carousel ---*/
   #carouselContainer {max-width: 1000px;}
 
@@ -436,6 +441,12 @@ a {
   .list-group-item
   {
     overflow:hidden;
+  }
+
+  #utente {
+      font-size: 60px;
+      font-family:  'Gloria Hallelujah', cursive;
+
   }
 
 
