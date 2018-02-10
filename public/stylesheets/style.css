@@ -482,7 +482,9 @@ a {
   }
 
 
-  #emotionString{margin-left: 15px;}
+  #emotionString{
+    margin-left: 15px;
+  }
 
   #myButton2 {
     position: absolute;
