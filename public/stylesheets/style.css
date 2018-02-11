@@ -448,8 +448,10 @@ a {
       font-size: 60px;
       font-family:  'Gloria Hallelujah', cursive;
       padding-top: 60px;
+  }
 
-
+  #print{
+    padding-top: 20px;
   }
 
 

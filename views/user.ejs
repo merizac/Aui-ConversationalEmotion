@@ -58,7 +58,10 @@
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <%= user.disabilityDescription %></li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Note aggiuntive</strong></span> <%= user.notes %></li>
             </ul>
-            <a id="newsession" class="btn btn-primary" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
+            <a class="btn btn-primary" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
+            <form id="print">
+                <input type="button"  class="btn btn-info"  name="Submit" value="STAMPA" onclick="window.print()">
+            </form>
         </div><!--/col-3-->
 
         <div class="col-sm-9">
@@ -184,6 +187,7 @@
             }
                 })
         </script>
+
     </div>
     </div>
 
