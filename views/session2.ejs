@@ -30,10 +30,12 @@
     <div class="row top-video-row">
         <% data.forEach(function(elem, index){ %>
             <div class="col-xs-5" id="MyImage">
-                <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
-                <a  class="preview" type="button" video = "<%= elem.filename.video%>" modalbutton = "true" id="myButton">
-                    <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
-                </a>
+                <div id="btn-wrapper" video = "<%= elem.filename.video%>">
+                    <img id="theImage" src="/video/thumbnail?filename=<%= elem.filename.thumbnail%>" class="img-responsive">
+                    <a  class="preview" type="button" modalbutton = "true" id="myButton">
+                        <span class="video-link-icon"><i class="glyphicon glyphicon-play"></i></span>
+                    </a>
+                </div>
             </div>
             <div class="col-xs-1">
                 <div class="form-group radio-button-video">
@@ -112,19 +114,22 @@
         var pattern = '"',
             re = new RegExp(pattern, "g");
         var user = localStorage.getItem("user").replace(re, '');
-        modalsBtn.forEach(function(elem){
-           elem.onclick = function(event){
-               event.preventDefault();
-               var video = document.getElementById("videotoshow");
-               var src = "/video?filename=" + event.target.parentElement.getAttribute('video');
-               video.src = src;
-               $('#modal-video').modal('show')
-           };
+
+        $('[id^="btn-wrapper"]').click(function(event){
+            var video = document.getElementById("videotoshow");
+            var src = "/video?filename=" + event.target.closest('div').getAttribute("video");
+            video.src = src;
+            $('#modal-video').modal('show');
         });
 
-        $('#close-modal').click(function(e) {
-            e.preventDefault();
-            $('#videotoshow').attr('src', '');
+        $('[id^="close-modal"]').click(function(event){
+            var video = document.getElementById("videotoshow");
+            video.src="";
+        });
+
+        $('[id^="modal-video"]').click(function(event){
+            var video = document.getElementById("videotoshow");
+            video.src="";
         });
 
         btn.addEventListener("click", function(event){
