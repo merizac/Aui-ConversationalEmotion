@@ -460,10 +460,13 @@ a {
   }
 
   #print{
-    padding-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
-
+  #sessionsTable {
+    overflow-y: scroll;
+  }
 
 /*---------------------------
         all_videos.ejs
