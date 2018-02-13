@@ -51,14 +51,19 @@
 
         <div class="col-sm-3"><!--left col-->
             <ul class="list-group">
-                <li class="list-group-item text-muted">Profilo utente</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Nome</strong></span> <%= user.name %></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Cognome</strong></span> <%= user.surname %></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Età</strong></span> <%= user.age %></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <%= user.disabilityDescription %></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Note aggiuntive</strong></span> <%= user.notes %></li>
+                <li class="list-group-item text-muted">Profilo utente
+                    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm pull-right"><span class="glyphicon glyphicon-pencil"></span></button></td>
+
+                </li>
+                <div id="userinfo">
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Nome</strong></span> <%= user.name %></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Cognome</strong></span> <%= user.surname %></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Età</strong></span> <%= user.age %></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <%= user.disabilityDescription %></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Note aggiuntive</strong> </span><%= user.notes %></li>
+                </div>
             </ul>
-            <a class="btn btn-primary" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
+            <a class="btn btn-primary" id="newsession" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
             <form id="print">
                 <input type="button"  class="btn btn-info"  name="Submit" value="STAMPA" onclick="window.print()">
             </form>
@@ -96,6 +101,30 @@
                                 </tr>
                             <%})%>
 
+
+                            <div id="edit" class="modal fade" role="dialog" align="center" style="padding-top: 200px">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" style="color: darkred" data-dismiss="modal">×</button>
+                                            <h4 class="modal-title" align="center"><strong>Modifica profilo utente</strong></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input id="nome" type="text" class="form-control" name="fname" placeholder="Nome">
+                                            <input id="cognome" type="text" class="form-control" name="fname" placeholder="Cognome">
+                                            <input id="anni" type="text" class="form-control" name="fname" placeholder="Età">
+                                            <input id="disabilita" type="text" class="form-control" name="fname" placeholder="Descrizione Disabilità">
+                                            <input id="note" type="text" class="form-control" name="fname" placeholder="Note aggiuntive">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="up" class="btn btn-success" data-dismiss="modal">Aggiorna</button>
+                                            <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Chiudi</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             </tbody>
                         </table>
                     </div><!--/table-resp-->
@@ -119,6 +148,11 @@
                                     <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
                                 </tr>
                             </tbody>
+
+
+
+
+
                         </table>
                     </div>
                 </div><!--/tab-pane-->
@@ -180,12 +214,46 @@
             })
 
             $("document").ready(
-                function(){
+                function() {
                     var newsession = document.getElementById("newsession");
-                    newsession.onclick= function(elem) {
-                         location.href = "/session1?id=" + elem.target.getAttribute("child");
-            }
+                    var nome = document.getElementById("nome");
+                    var cognome = document.getElementById("cognome");
+                    var anni = document.getElementById("anni");
+                    var note = document.getElementById("note");
+                    var disabilita = document.getElementById("disabilita");
+                    var submit = document.getElementById("up");
+
+
+                    newsession.onclick = function (elem) {
+                        location.href = "/session1?id=" + elem.target.getAttribute("child");
+                    }
+
+                    submit.onclick = function(elem){
+                        var info = document.getElementById("userinfo").children;
+                        var data = {
+                            name: (nome.value=="" ? info[0].innerText.split(" ")[1] : nome.value) ,
+                            surname: (cognome.value=="" ? info[1].innerText.split(" ")[1] : cognome.value),
+                            age: (anni.value=="" ? info[2].innerText.split(" ")[1] : anni.value),
+                            disabilityDescription: (disabilita.value=="" ? info[3].innerText.slice(22)[1] : disabilita.value),
+                            notes: (note.value=="" ? info[4].innerText.slice(16)[1] : note.value),
+                            id: newsession.getAttribute("child")
+                        };
+
+                        $.ajax({
+                            type: 'POST',
+                            data: JSON.stringify(data),
+                            contentType: 'application/json',
+                            url: 'http://localhost:3000/profiles/update',
+                            success: function(data) {
+                                location.href="/user?id=" + newsession.getAttribute("child");
+                            }
+                        });
+
+                    }
+
+                    return false;
                 })
+
         </script>
 
     </div>

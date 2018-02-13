@@ -154,18 +154,18 @@ conn.once("open", function() {
     router.post('/delete', function (req, res, next) {
 
         var id = req.body.id;
-        userData.findById(id)
-            .then(function(user){
-                if(!user.imageDefault){
-                    gfs.remove({ _id: ""+user.image });
-                }
+    userData.findById(id)
+        .then(function(user){
+            if(!user.imageDefault){
+                gfs.remove({ _id: ""+user.image });
+            }
 
-            });
-        userData.findByIdAndRemove(id).exec();
-        res.send({
-            message : "success"
         });
+    userData.findByIdAndRemove(id).exec();
+    res.send({
+        message : "success"
     });
+});
 
     router.get('/user', function (req, res, next) {
         res.redirect(url.format({
@@ -176,5 +176,35 @@ conn.once("open", function() {
         }));
 
     });
+
+
+    router.post('/update', function (req, res, next) {
+        var id = req.body.id;
+        userData.findById(id)
+            .then(function(user){
+               user.name = req.body.name;
+               user.surname = req.body.surname;
+               user.age = req.body.age;
+               user.disabilityDescription = req.body.disabilityDescription;
+               user.notes = req.body.notes;
+
+
+                user.save(function (err,user) {
+                    if(err) {
+                        res.send(err);
+                    }
+                    else{
+                        res.send({
+                            message : "success"
+                        });
+                    }
+                });
+
+            });
+
+
+        });
+
+
 });
 module.exports = router;
