@@ -39,9 +39,9 @@
     <% video.forEach(function(elem, index) {%>
         <div class="container">
             <div class="row top-video-row" id="newVideoRow">
-                <h2 id="emotionString"><strong><%= emotions[index] %></strong></h2>
-                <button style="margin-left: 15px; margin-bottom: 15px;" type="button" id="addVideo-<%= elem.emotion%>" href="#"
-                        class="btn btn-success btn-lg" role="button" >Nuovo video</button>
+                <h2 id="emotionString" class="pull-left"><%= emotions[index] %></h2>
+                <button style="margin-right: 30px; margin-top: 10px;" type="button" id="addVideo-<%= elem.emotion%>" href="#"
+                        class="btn btn-success btn-lg pull-right" role="button" >Nuovo video</button>
             </div>
 
             <div class="row" id="scrollRow">
