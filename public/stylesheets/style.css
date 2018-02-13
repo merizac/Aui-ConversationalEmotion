@@ -444,10 +444,18 @@ a {
     overflow:hidden;
   }
 
+  .vertical-align {
+    display: flex;
+    align-items: center;
+  }
+
+  .image{
+    width: 20vh;
+  }
+
   #utente {
-      font-size: 60px;
+      font-size: 5.5vw;
       font-family:  'Gloria Hallelujah', cursive;
-      padding-top: 60px;
   }
 
   #print{
