@@ -77,7 +77,7 @@
 
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active"><a href=#sessioni data-toggle="tab"><font color="black">Sessioni di <%= user.name %></font></a></li>
-                    <li><a href="#modifica" data-toggle="tab"><font color="black">Modifica profilo</font></a></li>
+                    <li><a href="#modifica" data-toggle="tab"><font color="black">Appunti</font></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -140,17 +140,22 @@
                                 <thead>
                                 <tr>
                                     <th>Data</th>
-                                    <th>Servizio</th>
-                                    <th>Modifica</th>
+                                    <th>Note</th>
+                                    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
+
                                 </tr>
                                 </thead>
 
                                 <tbody id="items">
+
+                                <% note.forEach(function(elem){%>
+
                                 <tr>
-                                    <td>10.05.2017</td>
-                                    <td>MASSAGGIO schiena</td>
-                                    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                                    <td><%= elem.date %></td>
+                                    <td><%= elem.notes %></td>
                                 </tr>
+                                <%})%>
+
                                 </tbody>
 
 
@@ -170,13 +175,15 @@
 
             <script>
                 var ctx = document.getElementById("myChart2");
-                var sessions= <%- JSON.stringify(session) %>;
+                var sessions= <%- JSON.stringify(session)%>;
                 var score = [];
                 var date = [];
                 sessions.forEach(function(session){
                     score.push(session.score);
                     date.push(session.date);
                 });
+
+                //grafico progressi
                 new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -209,6 +216,7 @@
                     }
                 })
 
+
                 $("document").ready(
                     function() {
                         var newsession = document.getElementById("newsession");
@@ -220,10 +228,12 @@
                         var submit = document.getElementById("up");
 
 
+                        //nuova sessione
                         newsession.onclick = function (elem) {
                             location.href = "/session1?id=" + elem.target.getAttribute("child");
                         }
 
+                        //modifica profilo
                         submit.onclick = function(elem){
                             var info = document.getElementById("userinfo").children;
                             var data = {

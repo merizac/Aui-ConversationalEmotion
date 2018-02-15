@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var userData = require('../models/user_model');
 var sessionData = require('../models/session_model');
+var notesData = require('../models/notes_model');
+
 var moment = require('moment');
 
 
@@ -36,9 +38,11 @@ function onInsert(err, docs) {
 router.get('/', function(req, res, next){
     userData.findById(req.query.id, function(err, resp){
         sessionData.find({"user" : req.query.id}, function (err, sessions) {
-                console.log(sessions);
-                res.render('user', {user: resp, session: sessions});
+            notesData.find({"user" : req.query.id}, function(err, notes) {
+               res.render('user', {user :resp, session:sessions, note: notes});
             })
+
+        })
     });
 
 });
@@ -52,6 +56,16 @@ router.post('/insert', function (req, res, next) {
      "choices": req.body.choices
     };
 sessionData.collection.insert(newsession, onInsert);
+
+});
+
+router.post('/insert2', function (req, res, next) {
+    var newnote = {
+        "user": req.body.user,
+        "date": moment().format("DD/MM/YY HH:mm"),
+        "note": req.body.note,
+    };
+    notesData.collection.insert(newnote, onInsert);
 
 });
 
