@@ -439,6 +439,11 @@ a {
     text-align: center;
   }
 
+  #disabilities {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   .list-group-item
   {

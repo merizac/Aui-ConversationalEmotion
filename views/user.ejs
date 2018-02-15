@@ -61,8 +61,8 @@
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Nome</strong></span> <%= user.name %></li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Cognome</strong></span> <%= user.surname %></li>
                         <li class="list-group-item text-right"><span class="pull-left"><strong>Età</strong></span> <%= user.age %></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <%= user.disabilityDescription %></li>
-                        <li class="list-group-item text-right"><span class="pull-left"><strong>Note aggiuntive</strong> </span><%= user.notes %></li>
+                        <li class="list-group-item"><span class="pull-left"><strong>Descrizione disabilità</strong></span> <br> <%= user.disabilityDescription %> </li>
+                        <li class="list-group-item"><span class="pull-left"><strong>Note aggiuntive</strong></span> <br> <%= user.notes %> </li>
                     </div>
                 </ul>
                 <a class="btn btn-primary" id="newsession" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
