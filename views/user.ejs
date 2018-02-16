@@ -83,8 +83,8 @@
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="sessioni">
-                        <div class="table-responsive" id="sessionsTable">
-                            <table class="table" bgcolor="white">
+                        <div class="table-responsive">
+                            <table class="table" bgcolor="white" id="sessionsTable">
                                 <thead id="tableHead">
                                 <tr>
                                     <th>Data</th>
@@ -219,6 +219,7 @@
 
                 $("document").ready(
                     function() {
+
                         var newsession = document.getElementById("newsession");
                         var nome = document.getElementById("nome");
                         var cognome = document.getElementById("cognome");
@@ -257,6 +258,8 @@
 
                         }
 
+
+
                         return false;
                     })
 
@@ -264,21 +267,5 @@
 
         </div>
         </div>
-
-
-    <div class="row top-buffer">
-
-
-
-
-    </div><!--/row-->
-
-
-    <!--GRAFICO PROGRESSI-->
-
-    <div class="row" >
-
-
-    </div>
 
 </body>

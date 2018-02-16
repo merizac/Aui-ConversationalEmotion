@@ -11,7 +11,7 @@ a {
 /* --- navbar --- */
 .navbar {
   background-color: #0066FF;
-  height: 52px !important;
+  height: 50px !important;
 }
 
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
@@ -469,9 +469,41 @@ a {
     padding-bottom: 15px;
   }
 
-  #sessionsTable {
-    overflow-y: scroll;
+  table {
+    width: 100%;
   }
+
+table {
+  width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+thead th {
+  height: 47px;
+}
+
+tbody {
+  height: 250px;
+  overflow-y: auto;
+}
+
+thead {
+  /* fallback */
+}
+
+
+tbody td, thead th {
+  width: 25%;
+  float: left;
+}
 
 /*---------------------------
         all_videos.ejs
