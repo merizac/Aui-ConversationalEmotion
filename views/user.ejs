@@ -175,7 +175,7 @@
 
                                 <tr>
                                     <td><%= elem.date %></td>
-                                    <td><%= elem.notes %></td>
+                                    <td><%= elem.note %></td>
                                 </tr>
                                 <%})%>
 
@@ -285,11 +285,9 @@
                         nuovanota.onclick = function (elem) {
                             var nota= {
                                 user: newsession.getAttribute("child"),
-                                note: appunti
+                                note: appunti.value
                             };
-
-                            console.log(appunti);
-
+                            
                             $.ajax({
                                 type: 'POST',
                                 data: JSON.stringify(nota),
