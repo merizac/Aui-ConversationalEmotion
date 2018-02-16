@@ -66,6 +66,7 @@ router.post('/insert2', function (req, res, next) {
         "note": req.body.note,
     };
     notesData.collection.insert(newnote, onInsert);
+    res.send({message: "success"});
 
 });
 
