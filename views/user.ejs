@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <!-- Website Title & Description for Search Engine purposes -->
     <title>Child's profile</title>
@@ -66,7 +66,13 @@
                     </div>
                 </ul>
                 <a class="btn btn-primary" id="newsession" child="<%= user._id%>" role="button"> NUOVA SESSIONE </a>
+
+               <!-- <a href="#" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-print"></span> Print
+                </a>-->
+
                 <form id="print">
+                    <span class="glyphicon glyphicon-print"></span>
                     <input type="button"  class="btn btn-info"  name="Submit" value="STAMPA" onclick="window.print()">
                 </form>
             </div><!--/col-3-->
@@ -134,6 +140,23 @@
                         </div><!--/table-resp-->
                     </div><!--/tab-pane-->
 
+                    <div id="nuovanota" class="modal fade" role="dialog" align="center" style="padding-top: 200px">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" style="color: darkred" data-dismiss="modal">×</button>
+                                    <h4 class="modal-title" align="center"><strong> Aggiungi nuova nota </strong></h4>
+                                </div>
+                                <div class="modal-body" >
+                                    <input id="appunti" type="text" class="form-control" placeholder="Inserisci qui il testo">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="new" class="btn btn-success" data-dismiss="modal">Aggiungi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="tab-pane" id="modifica">
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -141,7 +164,7 @@
                                 <tr>
                                     <th>Data</th>
                                     <th>Note</th>
-                                    <td><button type="button" data-toggle="modal"  data-target="#edit" data-uid="1" class="update btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                                    <td style="padding-right: 30px"><button type="button" data-toggle="modal"  data-target="#nuovanota" data-uid="1" class="update btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-plus"></span></button></td>
 
                                 </tr>
                                 </thead>
@@ -152,7 +175,7 @@
 
                                 <tr>
                                     <td><%= elem.date %></td>
-                                    <td><%= elem.notes %></td>
+                                    <td><%= elem.note %></td>
                                 </tr>
                                 <%})%>
 
@@ -227,6 +250,8 @@
                         var note = document.getElementById("note");
                         var disabilita = document.getElementById("disabilita");
                         var submit = document.getElementById("up");
+                        var nuovanota = document.getElementById("new");
+                        var appunti= document.getElementById("appunti");
 
 
                         //nuova sessione
@@ -258,7 +283,22 @@
 
                         }
 
-
+                        nuovanota.onclick = function (elem) {
+                            var nota= {
+                                user: newsession.getAttribute("child"),
+                                note: appunti.value
+                            };
+                            
+                            $.ajax({
+                                type: 'POST',
+                                data: JSON.stringify(nota),
+                                contentType: 'application/json',
+                                url: 'http://localhost:3000/user/insert2',
+                                success: function(nota) {
+                                    location.href="/user?id=" + newsession.getAttribute("child");
+                                }
+                            });
+                        }
 
                         return false;
                     })
