@@ -147,6 +147,13 @@
                     var choices = modalsBtn.length;
                     var precision = Math.pow(10, 2)
                     var points = Math.ceil((choices/attempts) * precision) / precision
+                    var emotions = {
+                        joy: "gioia",
+                        sadness: "tristezza",
+                        fear: "paura",
+                        disgust: "disgusto",
+                        anger: "rabbia"
+                    }
 
 
 
@@ -156,7 +163,7 @@
                             $.post("/user/insert", {
                                 'user': user,
                                 'points': points,
-                                'emotion': emotion,
+                                'emotion': emotions[emotion],
                                 'choices': choices
                             });
 
