@@ -99,8 +99,13 @@ $(document).ready(function(){
 		},
 		onComplete: function() {
 			console.log('done scrolling');
+
 		}
 	});
+
+	$('#login').on('click', function(){
+	    location.href = '/profiles'
+    })
 	
     $(window).scroll(function () {
         if ($(window).scrollTop() > 400) {
