@@ -147,6 +147,8 @@
                 $.post("http://localhost:3000/video/delete", {
                     thumbnail: thumbnail,
                     video : video
+                }, function(){
+                    location.href="/all_videos"
                 });
             });
 

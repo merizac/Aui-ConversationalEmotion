@@ -100,7 +100,9 @@ conn.once("open", function() {
                     console.log('successfully deleted '+ filename);
                 });
 
-                res.send("success");
+                res.send({
+                    result : "Success"
+                });
 
             } );
         }
@@ -116,7 +118,9 @@ conn.once("open", function() {
             };
 
             userData.collection.insert(newUser, onInsert);
-            res.send("success");
+            res.send({
+                result : "Success"
+            });
 
         }
 
