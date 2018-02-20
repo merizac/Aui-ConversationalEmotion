@@ -141,8 +141,9 @@
             });
 
             $('[id^="delete"]').click(function(event){
-                var thumbnail = event.target.parentElement.children[0].src.split("?")[1].split("=")[1];
-                var video = event.target.parentElement.children[1].getAttribute("video");
+                var thumbnail = event.target.parentElement.children[0].children[0].src.split("?")[1].split("=")[1];
+                var video = event.target.parentElement.children[0].getAttribute("video");
+
                 $.post("http://localhost:3000/video/delete", {
                     thumbnail: thumbnail,
                     video : video

@@ -24,6 +24,10 @@ mongoose.connect("mongodb://root:AUI-project2017@ds135196.mlab.com:35196/auitest
     useMongoClient:true
 });
 
+/*mongoose.connect("mongodb://localhost:27017/aui_db",{
+    useMongoClient:true
+});*/
+
 var session1 = require('./routes/session1');
 var tone_analyzer = require('./routes/tone-analyzer');
 var key = require('./routes/key');
