@@ -87,10 +87,7 @@ a {
           home.ejs
  --------------------------*/
 
-#logo {
-    font-size: 28px;
-    font-family: 'Indie Flower', cursive !important;
-}
+
 
   /*--- carousel ---*/
   #carouselContainer {max-width: 1000px;}
@@ -118,7 +115,7 @@ a {
   }
 
   #slide2{
-    background: url('../images/video.jpg') top center no-repeat;
+    background: url('../img/slider/video.jpg') top center no-repeat;
   }
 
   #slide3{
