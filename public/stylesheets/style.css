@@ -87,7 +87,10 @@ a {
           home.ejs
  --------------------------*/
 
-
+#logo {
+  font-size: 28px;
+  font-family: 'Indie Flower', cursive !important;
+}
 
   /*--- carousel ---*/
   #carouselContainer {max-width: 1000px;}
