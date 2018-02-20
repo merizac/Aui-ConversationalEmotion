@@ -10,7 +10,7 @@ a {
 
 /* --- navbar --- */
 .navbar {
-  background-color: #0066FF;
+  background-color: rgba(0,102,255,.8);
   height: 50px !important;
 }
 
