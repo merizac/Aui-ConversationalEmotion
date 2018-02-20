@@ -505,6 +505,26 @@ tbody td, thead th {
   float: left;
 }
 
+.note {
+  width:65%;
+}
+
+.note td{
+  text-align: left;
+}
+
+.sess_head{
+  height: 6.5vh;
+}
+
+@media (max-width: 1024px) {
+  .sess_head {
+    font-size: 1.7vh;
+  }
+}
+
+
+
 /*---------------------------
         all_videos.ejs
 --------------------------*/
