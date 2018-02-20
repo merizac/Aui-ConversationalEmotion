@@ -135,6 +135,15 @@
     <!-- Modernizer Script for old Browsers -->
     <script src="js/modernizr-2.6.2.min.js"></script>
 
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+        * {
+            font-family: 'Gill Sans', sans-serif;
+            font-size: 2vh;
+        }
+    </style>
+
 </head>
 
 <body id="body">
@@ -151,6 +160,7 @@
 Fixed Navigation
 ==================================== -->
 <header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+
     <div class="container">
         <div class="navbar-header">
             <!-- responsive nav button -->
@@ -163,9 +173,9 @@ Fixed Navigation
             <!-- /responsive nav button -->
 
             <!-- logo -->
-            <h1 class="navbar-brand">
-                <a href="#body">Express YourSelf</a>
-            </h1>
+            <div class="navbar-brand">
+                <a id="logo" href="#body">Express YourSelf</a>
+            </div>
             <!-- /logo -->
         </div>
 
@@ -269,13 +279,19 @@ End Fixed Navigation
                         <h3>Recent Works</h3>
                         <div id="works">
                             <div class="work-item">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> <br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                <p align="center" style="font-size: 25px;">      Il sistema permette di registrare in real-time la conversazione del paziente per poi analizzarne
+                                    le parole e restituire un grafico con le emozioni scaturite dalla conversazione analizzata. <br><br>
+                                    Le emozioni considerate durante l'analisi sono le seguenti: Rabbia, Disgusto, Paura, Gioia e Tristezza. </p>
                             </div>
                             <div class="work-item">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                <p align="center" style="font-size: 25px;">      In base all'emozione predominante ottenuta dall'analisi precedente, vengono proposti al paziente
+                                    dei brevi spezzoni di cartoni animati, di cui uno solo rappresenta l'emozione in questione. <br><br>
+                                    Viene quindi chiesto al paziente di scegliere il video corretto tra quelli proposti. </p>
                             </div>
                             <div class="work-item">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br><br> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                <p align="center" style="font-size: 25px;">     Ogni sessione col paziente viene registrata nel sistema per monitorare, tramite un punteggio,
+                                    eventuali miglioramenti nel processo di scelta del video corretto. <br><br>
+                                    L'obiettivo è di migliorare nel paziente la consapevolezza delle proprie emozioni e il livello di empatia. </p>
                             </div>
                         </div>
                     </div>
