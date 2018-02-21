@@ -20,8 +20,18 @@
 }
 
 #firstSlide{
-    padding-bottom: 370px;
+    padding-bottom: 300px;
     padding-left: 200px;
+    font-family: 'Indie Flower', cursive !important;
+}
+
+#secondSlide{
+    font-family: 'Indie Flower', cursive !important;
+}
+
+#thirdSlide{
+    color: blue;
+    font-family: 'Indie Flower', cursive !important;
 }
 
 body {
@@ -370,7 +380,7 @@ h1.navbar-brand {
 
 .caption-content h2 {
     color: #fff;
-    font-size: 52px;
+    font-size: 68px;
     font-weight: 400;
     margin-bottom: 25px;
     text-transform: uppercase;
