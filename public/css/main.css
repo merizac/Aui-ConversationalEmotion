@@ -20,8 +20,8 @@
 }
 
 #firstSlide{
-    padding-bottom: 330px;
-    padding-left: 170px;
+    padding-bottom: 23%;
+    padding-left: 10%;
     font-family: 'Indie Flower', cursive !important;
 }
 
@@ -32,6 +32,7 @@
 #thirdSlide{
     color: blue;
     font-family: 'Indie Flower', cursive !important;
+    font-style: ;
 }
 
 body {
