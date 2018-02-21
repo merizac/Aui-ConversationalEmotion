@@ -72,9 +72,13 @@ a {
 
   #chartContainer {margin-top: 60px;}
 
+  #startBtn {
+    margin-top: 3px;
+  }
+
   /*--- stopBtn ---*/
   #stopBtn {
-
+    margin-top: 3px;
   }
 
   /*--- chart ---*/
